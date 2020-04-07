@@ -84,7 +84,7 @@ section {
     width: 50%;
     background-color: #FFFAFA;
     position: relative;
-    top: 18vh;
+    top: 3vh;
     border-radius: 10px;
 }
 
@@ -113,6 +113,10 @@ h2 {
     border-radius: 10px;
 }
 
+.btnVoltar {
+    width: 10em;
+}
+
 #btn_relatorio {
     width: 10%;
 }
@@ -127,7 +131,8 @@ h2 {
 
 @media screen and (max-width: 800px) {}
 
-@-webkit-keyframes aparece {
+
+/* @-webkit-keyframes aparece {
     from {
         opacity: 0;
         transform: scale(0.001);
@@ -139,5 +144,5 @@ h2 {
         opacity: 0;
         transform: scale(0.001);
         transform: rotate(180deg);
-    }
-}
+    } 
+  } */
