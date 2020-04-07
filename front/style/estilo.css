@@ -25,7 +25,8 @@ body {
 }
 
 input[type=text],
-input[type=number] {
+input[type=number],
+input[type=tel] {
     border: none;
     font-size: 14px;
     margin-bottom: 2em;
@@ -45,6 +46,10 @@ input[type=number] {
 input[type=radio] {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+input[type=tel] {
+    width: 30%;
 }
 
 button {
