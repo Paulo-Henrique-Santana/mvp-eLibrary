@@ -4,56 +4,56 @@ include 'Livro.php';
 
 Class CrudLivro extends Livro
 {
+    private $pdo;
+
+    public function __construct()
+    {
+        $this->pdo = new PDO('mysql:dbname=biblioteca; host=localhost', 'root', '');
+    }
+
     private function validaLivro()
     {
-        include 'conexao.php';
-        $pesquisa = $conexao->query("SELECT id_livro FROM livro WHERE nome_livro = '$this->nomeLivro'");
-        $resultado = mysqli_fetch_array($pesquisa);
+        $pesquisa = $this->pdo->query("SELECT id_livro FROM livro WHERE nome_livro = '$this->nomeLivro'");
+        $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado["id_livro"];
     }
     
     private function validaAutor()
     {
-        include 'conexao.php';
-        $pesquisa = $conexao->query("SELECT id_autor FROM autor WHERE nome_autor = '$this->nomeAutor'");
-        $resultado = mysqli_fetch_array($pesquisa);
+        $pesquisa = $this->pdo->query("SELECT id_autor FROM autor WHERE nome_autor = '$this->nomeAutor'");
+        $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado["id_autor"];
     }
 
     private function validaEditora()
     {
-        include 'conexao.php';
-        $pesquisa = $conexao->query("SELECT id_editora FROM editora WHERE nome_editora = '$this->nomeEditora'");
-        $resultado = mysqli_fetch_array($pesquisa);
+        $pesquisa = $this->pdo->query("SELECT id_editora FROM editora WHERE nome_editora = '$this->nomeEditora'");
+        $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado["id_editora"];
     }
 
     private function cadastraAutor()
     {
-        include 'conexao.php';
-        $conexao->query("INSERT INTO autor(nome_autor) VALUES('$this->nomeAutor')");
+        $this->pdo->query("INSERT INTO autor(nome_autor) VALUES('$this->nomeAutor')");
     }
 
     private function cadastraEditora()
     {
-        include 'conexao.php';
-        $conexao->query("INSERT INTO editora(nome_editora) VALUES('$this->nomeEditora')");
+        $this->pdo->query("INSERT INTO editora(nome_editora) VALUES('$this->nomeEditora')");
     }
 
     private function cadastraExemplar()
     {
-        include 'conexao.php';
-        $pesquisa = $conexao->query("SELECT count(id_livro) as 'ultimo_id_livro' from livro");
-        $resultado = mysqli_fetch_array($pesquisa);
+        $pesquisa = $this->pdo->query("SELECT count(id_livro) as 'ultimo_id_livro' from livro");
+        $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         $livro = $resultado["ultimo_id_livro"];
         for($n = 0; $n < $this->qtdExemplar; $n++){
-            $conexao->query("INSERT INTO exemplar(id_livro) VALUES($livro)");
+            $this->pdo->query("INSERT INTO exemplar(id_livro) VALUES($livro)");
         }
     }
 
     public function cadastraLivro()
     {
-        include 'conexao.php';
 
         $autor = $this->validaAutor();
         $editora = $this->validaEditora();
@@ -63,21 +63,21 @@ Class CrudLivro extends Livro
             echo 'livro já cadastrado <br> <a href="../front/cadastrarLivros.html">Voltar</a>';
         }
         else if($autor == true && $editora == true){
-            $conexao->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
+            $this->pdo->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
             VALUES('$this->nomeLivro', '$autor', '$editora') ");
             $this->cadastraExemplar();
             header("location: ../front/cadastrarLivros.html");
         }
         else if($autor == false && $editora == true){
             $this->cadastraAutor();
-            $conexao->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
+            $this->pdo->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
             VALUES('$this->nomeLivro', (SELECT count(id_autor) from autor), '$editora') ");
             $this->cadastraExemplar();
             header("location: ../front/cadastrarLivros.html");
         }
         else if($autor == true && $editora == false){
             $this->cadastraEditora();
-            $conexao->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
+            $this->pdo->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
             VALUES('$this->nomeLivro', '$autor', (SELECT count(id_editora) from editora)) ");
             $this->cadastraExemplar();
             header("location: ../front/cadastrarLivros.html");
@@ -85,7 +85,7 @@ Class CrudLivro extends Livro
         else{
             $this->cadastraAutor();
             $this->cadastraEditora();
-            $conexao->query("INSERT INTO livro(nome_livro, 
+            $this->pdo->query("INSERT INTO livro(nome_livro, 
                                          id_autor, 
                                          id_editora) 
                              VALUES('$this->nomeLivro', 
@@ -97,9 +97,8 @@ Class CrudLivro extends Livro
     }
 
     public function listarLivros()
-    {
-        include '../back/conexao.php';
-        $pesquisa = $conexao->query("SELECT livro.id_livro,
+    {   
+        $pesquisa = $this->pdo->query("SELECT livro.id_livro,
                                             nome_livro,
                                             nome_editora,
                                             nome_autor,
@@ -113,15 +112,8 @@ Class CrudLivro extends Livro
                                     ON livro.id_livro = exemplar.id_livro
                                     GROUP BY id_livro
                                     ORDER BY nome_livro ASC");
-        $cont = 0;
-        while($coluna = mysqli_fetch_array($pesquisa)){
-            $livro[$cont][0] = $coluna["nome_livro"];
-            $livro[$cont][1] = $coluna["nome_autor"];
-            $livro[$cont][2] = $coluna["nome_editora"];
-            $cont++;
-        }
-
-        return $livro;
+        $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $livros;
     }
 
     public function excluirLivro()
