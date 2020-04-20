@@ -56,9 +56,9 @@ ALTER TABLE locacao ADD COLUMN id_aluno INT NOT NULL;
 ALTER TABLE locacao ADD FOREIGN KEY (id_aluno) REFERENCES aluno(id_aluno);
 ALTER TABLE locacao ADD COLUMN id_status_locacao INT NOT NULL;
 ALTER TABLE locacao ADD FOREIGN KEY (id_status_locacao) REFERENCES status_locacao(id_status_locacao);
+ALTER TABLE locacao ADD COLUMN id_exemplar INT NOT NULL;
+ALTER TABLE locacao ADD FOREIGN KEY (id_exemplar) REFERENCES exemplar(id_exemplar);
 
-ALTER TABLE exemplar ADD COLUMN id_locacao INT NOT NULL;
-ALTER TABLE exemplar ADD FOREIGN KEY (id_locacao) REFERENCES locacao(id_locao);
 ALTER TABLE exemplar ADD COLUMN id_livro INT NOT NULL;
 ALTER TABLE exemplar ADD FOREIGN KEY (id_livro) REFERENCES livro(id_livro);
 
