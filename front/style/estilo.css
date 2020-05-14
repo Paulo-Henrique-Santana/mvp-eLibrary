@@ -134,6 +134,15 @@ h2 {
     width: 10%;
 }
 
+th,
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+#btn_alugar {
+    width: 2%;
+}
+
 @media screen and (max-width: 800px) {}
 
 
