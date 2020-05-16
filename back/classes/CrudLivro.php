@@ -116,6 +116,13 @@ Class CrudLivro extends Livro
         return $livros;
     }
 
+    public function buscarLivro($nomeLivro)
+    {
+        $pesquisa = $this->pdo->query("SELECT * FROM livro WHERE nome_livro LIKE '%$nomeLivro%'");
+        $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $livros;
+    }
+
     public function excluirLivro()
     {
 

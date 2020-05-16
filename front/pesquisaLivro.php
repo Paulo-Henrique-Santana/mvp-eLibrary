@@ -32,7 +32,6 @@
 					echo "<td><a href='#'>[Excluir]</a></td>
 						  <td><a href='#'>[Editar]</a></td>
 						  </tr>";
-					
 				}
 			?>
         </table>
