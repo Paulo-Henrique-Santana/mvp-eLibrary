@@ -12,10 +12,12 @@
 <body>
     <section>
         <a href="index.html"><i class="  material-icons">arrow_back</i></a>
-        <Form>
+        <Form method="post" action="../back/buscaLivro.php">
             <h2>Pesquisar livro</h2>
+            <input type="radio" name="tipo" value="livro" checked>Livro
+            <input type="radio" name="tipo" value="autor">Autor
             <br>
-            <input type="text"> <br>
+            <input type="text" name="pesquisa"> <br>
             <button>Pesquisar</button>
             <button>Limpar</button>
         </Form>
@@ -29,20 +31,6 @@
                     <th>Exemplares </th>
                     <th>Alugar</th>
 
-                </tr>
-                <tr>
-                    <td>O nome do vento</td>
-                    <td>Patrick Rothfuss</td>
-                    <td>Arqueiro</td>
-                    <td>2</td>
-                    <td><button class="btn_alugar">Alugar</button></td>
-                </tr>
-                <tr>
-                    <td>A Rainha Vermelha </td>
-                    <td>Victoria Aveyard</td>
-                    <td>HarperCollins</td>
-                    <td>5</td>
-                    <td><button class="btn_alugar">Alugar</button></td>
                 </tr>
             </table>
         </form>

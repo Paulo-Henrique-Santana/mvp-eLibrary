@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +17,7 @@
         <div>
             <a href="index.html"><i class="  material-icons">arrow_back</i></a>
         </div>
-        <form method="POST" action="../back/cadastraLivro.php?form=1">
+        <form method="POST" action="../back/cadastraLivro.php">
 
             <h2>Nome do Livro:</h2> <input type="text" name="nomeLivro" required>
             <br>
@@ -23,7 +26,12 @@
             <h2>Nome da Editora:</h2> <input type="text" name="nomeEditora" required>
             <br>
             <h2>Qtd:</h2> <input type="number" name="qtd" required> <br>
-
+            <?php 
+                if(isset($_SESSION['cadastraLivro'])){
+                    echo "<br>".$_SESSION['cadastraLivro']."<br>";
+                    unset($_SESSION['cadastraLivro']);
+                }
+            ?>
             <button>Cadastrar</button>
 
         </form>

@@ -60,27 +60,27 @@ Class CrudLivro extends Livro
         $livro = $this->validaLivro();
 
         if($autor == true && $editora == true && $livro == true){
-            echo 'livro já cadastrado <br> <a href="../front/cadastrarLivros.html">Voltar</a>';
+            return false;
         }
         else if($autor == true && $editora == true){
             $this->pdo->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
             VALUES('$this->nomeLivro', '$autor', '$editora') ");
             $this->cadastraExemplar();
-            header("location: ../front/cadastrarLivros.html");
+            return true;
         }
         else if($autor == false && $editora == true){
             $this->cadastraAutor();
             $this->pdo->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
             VALUES('$this->nomeLivro', (SELECT count(id_autor) from autor), '$editora') ");
             $this->cadastraExemplar();
-            header("location: ../front/cadastrarLivros.html");
+            return true;
         }
         else if($autor == true && $editora == false){
             $this->cadastraEditora();
             $this->pdo->query("INSERT INTO livro(nome_livro, id_autor, id_editora) 
             VALUES('$this->nomeLivro', '$autor', (SELECT count(id_editora) from editora)) ");
             $this->cadastraExemplar();
-            header("location: ../front/cadastrarLivros.html");
+            return true;
         }
         else{
             $this->cadastraAutor();
@@ -92,7 +92,7 @@ Class CrudLivro extends Livro
                              (SELECT count(id_autor) from autor), 
                              (SELECT count(id_editora) from editora))");
             $this->cadastraExemplar();
-            header("location: ../front/cadastrarLivros.html");
+            return true;
         }
     }
 
@@ -116,9 +116,16 @@ Class CrudLivro extends Livro
         return $livros;
     }
 
-    public function buscarLivro($nomeLivro)
+    public function buscarNomeLivro($nomeLivro)
     {
         $pesquisa = $this->pdo->query("SELECT * FROM livro WHERE nome_livro LIKE '%$nomeLivro%'");
+        $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $livros;
+    }
+
+    public function buscarNomeAutor($nomeAutor)
+    {
+        $pesquisa = $this->pdo->query("SELECT * FROM autor WHERE nome_autor LIKE '%$nomeAutor%'");
         $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $livros;
     }

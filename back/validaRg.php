@@ -11,6 +11,8 @@ if ($l->validaRg($_POST['rg']) == false){
 } else if($l->verificaLocacoesAluno($_POST['rg']) == false){
     $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
     header('location: ../front/validarg.php');
+} else{
+    header('location: ../front/locacao.php');
 }
 
 
