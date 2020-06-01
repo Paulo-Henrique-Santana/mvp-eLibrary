@@ -7,12 +7,10 @@ $pesquisa = $_POST['pesquisa'];
 
 if ($tipo == "livro"){
     $l = new CrudLivro;
-    echo "<pre>";
-    print_r($l->buscarNomeLivro($pesquisa));
+    $l->buscarNomeLivro($pesquisa);
 } else if($tipo == "autor"){
     $l = new CrudLivro;
-    echo "<pre>";
-    print_r($l->buscarNomeAutor($pesquisa));
+    $l->buscarNomeAutor($pesquisa);
 }
 
 ?>

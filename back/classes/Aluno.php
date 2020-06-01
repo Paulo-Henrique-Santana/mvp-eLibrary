@@ -71,17 +71,20 @@ Class Aluno
     {
         if ($this->validaRg() && $this->validaTelefone() == false){
             echo "rg já cadastrado";
+            return false;
         } 
         else if ($this->validaTelefone() && $this->validaRg() == false){
             echo "telefone já cadastrado";
+            return false;
         }
         else if ($this->validaRg() && $this->validaTelefone()){
-            echo "RG e TELEFONE já cadastrados";
+            return false;
         } else{
             $this->pdo->query("INSERT INTO aluno(nome_aluno, telefone_aluno, rg_aluno) VALUES('$this->nome', '$this->telefone', '$this->rg')");
-            echo"Aluno cadastrado";
+            return true;
         }
     }
+    
 
 
 }
