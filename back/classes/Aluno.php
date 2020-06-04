@@ -57,32 +57,28 @@ Class Aluno
     {
         $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$this->rg'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
-        return $resultado["id_aluno"];
+        if ($resultado["id_aluno"]){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public function validaTelefone()
     {
-        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$this->telefone'");
+        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE telefone_aluno = '$this->telefone'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
-        return $resultado["id_aluno"];
+        if ($resultado["id_aluno"]){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public function cadastraAluno()
     {
-        if ($this->validaRg() && $this->validaTelefone() == false){
-            echo "rg já cadastrado";
-            return false;
-        } 
-        else if ($this->validaTelefone() && $this->validaRg() == false){
-            echo "telefone já cadastrado";
-            return false;
-        }
-        else if ($this->validaRg() && $this->validaTelefone()){
-            return false;
-        } else{
-            $this->pdo->query("INSERT INTO aluno(nome_aluno, telefone_aluno, rg_aluno) VALUES('$this->nome', '$this->telefone', '$this->rg')");
-            return true;
-        }
+        $this->pdo->query("INSERT INTO aluno(nome_aluno, telefone_aluno, rg_aluno) VALUES('$this->nome', '$this->telefone', '$this->rg')");
+
     }
     
 
