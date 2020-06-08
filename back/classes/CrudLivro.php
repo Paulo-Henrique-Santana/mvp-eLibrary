@@ -131,7 +131,7 @@ Class CrudLivro extends Livro
                                        INNER JOIN exemplar
                                        ON livro.id_livro = exemplar.id_livro
                                        WHERE id_exemplar NOT IN (SELECT id_exemplar
-                                    							 FROM locacao
+                                        							 FROM locacao
 																 WHERE id_status_locacao = 1
 																 OR id_status_locacao = 3)
                                        AND nome_livro LIKE '%$nomeLivro%'

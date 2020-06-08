@@ -46,14 +46,16 @@
                             $livros = $l->buscarNomeAutor($pesquisa);
                         }
 
-                        foreach ($livros as $key => $value) {
+                        for ($i = 0; $i < count($livros); $i++) {
                             echo "<tr>";
-                            foreach ($value as $key => $value) {
+                            foreach ($livros[$i] as $key => $value) {
                                 if ($key != "id_livro") {
-                                    echo "<th>$value</th>";
+                                    echo "<td>$value</td>";
                                 }
                             }
-                            echo '<th><button>Alugar</button></th>';
+                            ?>
+                            <th><a href="locacao.php?idLivro=<?php echo $livros[$i]['id_livro'];?>">Alugar</a></th>
+                            <?php
                             echo "</tr>";
                         }
                     }

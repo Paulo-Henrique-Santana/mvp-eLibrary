@@ -1,3 +1,6 @@
+<?php
+  include '../back/classes/Locacao.php';
+?>
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">
   <head>
@@ -7,7 +10,26 @@
   </head>
   <body>
     <section>
-      <button type="button" name="button"></button>
+      <table>
+        <tr>
+          <th>Livro</th>
+          <th>Aluno</th>
+          <th>Data da Locação</th>
+          <th>Data de Entrega</th>
+          <th>Situação</th>
+        </tr>
+        <?php
+          $l = new Locacao;
+          $locacoes = $l->listarLocacoes();
+          foreach ($locacoes as $key => $value) {
+            echo "<tr>";
+            foreach ($value as $key => $value) {
+              echo "<td>$value</td>";
+            }
+            echo "</tr>";
+          }
+        ?>
+      </table>
     </section>
   </body>
 </html>
