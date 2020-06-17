@@ -59,8 +59,19 @@
                             echo "</tr>";
                         }
                     }
+                    
                 ?>
-            </table>
+             </table>
+             <br>
+             <table style="width: 100%;">
+             <h2>Confirmação</h2>
+             <tr>
+                    <th>Livro </th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Confirmar</th>
+                </tr>
+             </table>
         </form>
     </section>
 </body>
