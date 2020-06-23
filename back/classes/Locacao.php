@@ -15,32 +15,29 @@ Class Locacao
         $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$rg'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         if ($resultado["id_aluno"]){
-            $this->idAluno = $resultado["id_aluno"];
-            return true;
+            return $resultado["id_aluno"];
         } else{
             return false;
         }
     }
 
-    public function verificaLocacoesAluno()
+    public function verificaLocacoesAluno($rg)
     {
         $pesquisa = $this->pdo->query("SELECT count(id_locacao) AS qtd_locacoes 
                                         FROM locacao 
-                                        WHERE id_aluno = '$this->idAluno'");
+                                        INNER JOIN aluno
+                                        ON aluno.id_aluno = locacao.id_aluno
+                                        WHERE rg_aluno = '$rg'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
-        if ($resultado["qtd_locacoes"] == 3)
-        {
-            return false;
-        } else{
-            return true;
-        }
+        return $resultado["qtd_locacoes"];
+
     }
 
     public function pesquisaExemplarDisponivel($idLivro)
     {
         $pesquisa = $this->pdo->query("SELECT id_exemplar
                                         FROM exemplar
-                                        WHERE id_livro = 3
+                                        WHERE id_livro = $idLivro
                                         AND id_exemplar NOT IN(SELECT id_exemplar
                                                                 FROM locacao
                                                                 WHERE id_status_locacao = 1
@@ -71,6 +68,16 @@ Class Locacao
         $locacoes = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $locacoes;
     }
+
+    public function inserirLocacao($idAluno, $idExemplar)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $dtLocacao = date('Y/m/d');
+        $dtEntrega = date('Y/m/d', strtotime(' + 7 days'));
+        $this->pdo->query("INSERT INTO locacao(dt_locacao, dt_entrega, id_aluno, id_status_locacao, id_exemplar)
+        VALUES('$dtLocacao', '$dtEntrega', '$idAluno', 1, '$idExemplar')");
+    }
+
 }
 
 

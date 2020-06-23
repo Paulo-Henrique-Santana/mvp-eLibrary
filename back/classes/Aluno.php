@@ -53,12 +53,12 @@ Class Aluno
         $this->pdo = new PDO('mysql:dbname=biblioteca; host=localhost', 'root', '');
     }
 
-    public function validaRg()
+    public function validaRg($rg)
     {
-        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$this->rg'");
+        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$rg'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         if ($resultado["id_aluno"]){
-            return true;
+            return $resultado["id_aluno"];
         } else{
             return false;
         }

@@ -1,3 +1,8 @@
+<?php
+    include '../back/classes/CrudLivro.php';
+    include '../back/classes/Locacao.php';
+    $locacao = new Locacao;
+?>
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">
 
@@ -11,7 +16,8 @@
 
 <body>
     <section>
-        <a href="index.html"><i class="  material-icons">arrow_back</i></a>
+        <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
+        Locacoes efetuadas: <?php echo $_GET['locacoes'] ?>
         <form method="post">
             <h2>Pesquisar livro</h2>
             <input type="radio" name="tipo" value="livro" checked>Livro
@@ -32,18 +38,17 @@
                     <th>Alugar</th>
                 </tr>
                 <?php
-                    include '../back/classes/CrudLivro.php';
 
-                    if (isset($_POST['tipo']) || isset($_POST['pesquisa'])){
+                    if (isset($_POST['tipo']) && isset($_POST['pesquisa'])){
                         $tipo = $_POST['tipo'];
                         $pesquisa = $_POST['pesquisa'];
 
                         if ($tipo == "livro"){
-                            $l = new CrudLivro;
-                            $livros = $l->buscarNomeLivro($pesquisa);
+                            $crudLivro = new CrudLivro;
+                            $livros = $crudLivro->buscarNomeLivro($pesquisa);
                         } else if($tipo == "autor"){
-                            $l = new CrudLivro;
-                            $livros = $l->buscarNomeAutor($pesquisa);
+                            $crudLivro = new CrudLivro;
+                            $livros = $crudLivro->buscarNomeAutor($pesquisa);
                         }
 
                         for ($i = 0; $i < count($livros); $i++) {
@@ -54,24 +59,32 @@
                                 }
                             }
                             ?>
-                            <th><a href="locacao.php?idLivro=<?php echo $livros[$i]['id_livro'];?>">Alugar</a></th>
+                            <td>
+                                <a href="../back/insereLocacao.php?<?php 
+                                                        $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
+                                                        echo "exemplar=".$exemplar.
+                                                             "&idAluno=".$_GET['idAluno'];
+                                                     ?>">
+                                    Alugar
+                                </a>
+                            </td>
                             <?php
                             echo "</tr>";
                         }
                     }
-                    
                 ?>
-             </table>
-             <br>
-             <table style="width: 100%;">
-             <h2>Confirmação</h2>
-             <tr>
+            </table>
+            <br>
+            <!-- <table style="width: 100%;">
+                <h2>Livro Selecionados</h2>
+                <tr>
                     <th>Livro </th>
                     <th>Autor</th>
                     <th>Editora</th>
                     <th>Confirmar</th>
                 </tr>
-             </table>
+            </table> -->
+
         </form>
     </section>
 </body>
