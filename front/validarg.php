@@ -19,16 +19,25 @@
             <br>
             <input type="text" name="rg" placeholder="Digite seu RG" required>
             <?php 
-                if (isset($_POST['rg'])){
+                if (isset($_POST['rg']) && isset($_POST['acao'])){
                     $l = new Locacao;
-                    if ($l->validaRg($_POST['rg']) == false){
-                        $_SESSION['validaRG'] = "rg n cadastrado";
-                    } else if($l->verificaLocacoesAluno($_POST['rg']) >= 3){
-                        $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
-                    } else{
-                        $idAluno = $l->validaRg($_POST['rg']);
-                        $locacoesAluno = $l->verificaLocacoesAluno($_POST['rg']);
-                        header("location: locacao.php?idAluno=$idAluno&locacoes=$locacoesAluno");
+                    if ($_POST['acao'] == "alugar"){
+                        if ($l->validaRg($_POST['rg']) == false){
+                            $_SESSION['validaRG'] = "rg n cadastrado";
+                        } else if($l->verificaLocacoesAluno($_POST['rg']) >= 3){
+                            $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
+                        } else{
+                            $idAluno = $l->validaRg($_POST['rg']);
+                            $locacoesAluno = $l->verificaLocacoesAluno($_POST['rg']);
+                            header("location: locacao.php?idAluno=$idAluno&locacoes=$locacoesAluno");
+                        }
+                    }
+                    else {
+                        if ($l->validaRg($_POST['rg']) == false){
+                            $_SESSION['validaRG'] = "rg n cadastrado";
+                        } else {
+                            echo "devolver";
+                        }
                     }
                 }
                 if(isset($_SESSION['validaRG'])){
@@ -36,8 +45,8 @@
                     unset($_SESSION['validaRG']);
                 }
             ?>
-            <button>Realizar Locação</button>
-            <button>Devolver</button>
+            <button name="acao" value="alugar">Realizar Locação</button>
+            <button name="acao" value="devolver">Devolver</button>
         </form>
     </section>
 </body>
