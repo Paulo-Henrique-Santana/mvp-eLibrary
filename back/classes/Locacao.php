@@ -78,6 +78,28 @@ Class Locacao
         VALUES('$dtLocacao', '$dtEntrega', '$idAluno', 1, '$idExemplar')");
     }
 
+    public function listarLocacoesAluno($id)
+    {
+        $pesquisa = $this->pdo->query("SELECT nome_livro,
+                                                dt_locacao,
+                                                dt_entrega,
+                                                situacao_locacao
+                                        FROM status_locacao
+                                        INNER JOIN locacao
+                                        ON status_locacao.id_status_locacao = locacao.id_status_locacao
+                                        INNER JOIN exemplar
+                                        ON exemplar.id_exemplar = locacao.id_exemplar
+                                        INNER JOIN livro
+                                        ON livro.id_livro = exemplar.id_livro
+                                        INNER JOIN aluno
+                                        ON aluno.id_aluno = locacao.id_aluno
+                                        WHERE aluno.id_aluno = $id
+                                        AND locacao.id_status_locacao <> 2");
+        $resultado = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+
 }
 
 

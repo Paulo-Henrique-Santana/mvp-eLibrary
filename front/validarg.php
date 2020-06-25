@@ -36,7 +36,8 @@
                         if ($l->validaRg($_POST['rg']) == false){
                             $_SESSION['validaRG'] = "rg n cadastrado";
                         } else {
-                            echo "devolver";
+                            $idAluno = $l->validaRg($_POST['rg']);
+                            header("location: devolverLivro.php?idAluno=$idAluno");
                         }
                     }
                 }

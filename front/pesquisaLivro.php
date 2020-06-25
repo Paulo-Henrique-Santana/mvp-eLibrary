@@ -20,7 +20,7 @@
 				$l = new CrudLivro;
 				$livros = $l->buscarNomeLivro($_POST['pesquisa']);
 				echo '<table>
-						<tr>
+					  	<tr>
 							<th>Livro</th>
 							<th>Autor</th>
 							<th>Editora</th>
