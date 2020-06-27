@@ -1,5 +1,5 @@
 <?php
-    include '../back/classes/Locacao.php';
+    include_once '../back/classes/Locacao.php';
     session_start();
 ?>
 <!DOCTYPE html>

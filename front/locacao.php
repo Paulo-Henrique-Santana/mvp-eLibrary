@@ -1,6 +1,6 @@
 <?php
-    include '../back/classes/CrudLivro.php';
-    include '../back/classes/Locacao.php';
+    include_once '../back/classes/CrudLivro.php';
+    include_once '../back/classes/Locacao.php';
     $locacao = new Locacao;
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,8 @@
                                 <a href="../back/insereLocacao.php?<?php 
                                                         $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
                                                         echo "exemplar=".$exemplar.
-                                                             "&idAluno=".$_GET['idAluno'];
+                                                             "&idAluno=".$_GET['idAluno'].
+                                                             "&locacoes=".$_GET['locacoes'];
                                                      ?>">
                                     Alugar
                                 </a>

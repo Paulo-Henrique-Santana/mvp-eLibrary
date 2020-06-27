@@ -1,5 +1,5 @@
 <?php
-    include '../back/classes/Locacao.php';
+    include_once '../back/classes/Locacao.php';
     $l = new Locacao;
     $idAluno = $_GET['idAluno'];
 ?>
@@ -25,12 +25,14 @@
             </tr>
             <?php
                 $registros = $l->listarLocacoesAluno($idAluno);
-                foreach ($registros as $key => $value) {
+                for ($i = 0; $i < count($registros); $i++) {
                     echo"<tr>";
-                    foreach ($value as $key => $value) {
-                        echo"<td>$value</td>";
+                    foreach ($registros[$i] as $key => $value) {
+                        if ($key != "id_locacao"){
+                            echo"<td>$value</td>";
+                        }
                     }
-                    echo'<td><a href="#">Devolver</a></td>';
+                    echo"<td><a href=\"../back/devolveLocacao.php?idAluno=$idAluno&locacao=".$registros[$i]['id_locacao']."\">Devolver</a></td>";
                     echo"</tr>";
                 }
             ?>

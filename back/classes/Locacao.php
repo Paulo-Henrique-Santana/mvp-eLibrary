@@ -27,7 +27,8 @@ Class Locacao
                                         FROM locacao 
                                         INNER JOIN aluno
                                         ON aluno.id_aluno = locacao.id_aluno
-                                        WHERE rg_aluno = '$rg'");
+                                        WHERE rg_aluno = '$rg'
+                                        AND id_status_locacao <> 2");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado["qtd_locacoes"];
 
@@ -80,7 +81,8 @@ Class Locacao
 
     public function listarLocacoesAluno($id)
     {
-        $pesquisa = $this->pdo->query("SELECT nome_livro,
+        $pesquisa = $this->pdo->query("SELECT   id_locacao,
+                                                nome_livro,
                                                 dt_locacao,
                                                 dt_entrega,
                                                 situacao_locacao
@@ -99,6 +101,10 @@ Class Locacao
         return $resultado;
     }
 
+    public function devolverLocacao($idLocacao)
+    {
+        $pesquisa = $this->pdo->query("UPDATE locacao SET id_status_locacao = 2 WHERE id_locacao = $idLocacao");
+    }
 
 }
 

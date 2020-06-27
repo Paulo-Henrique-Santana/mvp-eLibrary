@@ -1,5 +1,5 @@
 <?php
-	include '../back/classes/CrudLivro.php';
+	include_once '../back/classes/CrudLivro.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">

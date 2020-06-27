@@ -1,5 +1,5 @@
 <?php
-    include '../back/classes/Aluno.php';
+    include_once '../back/classes/Aluno.php';
     session_start();
 ?>
 <!DOCTYPE html>

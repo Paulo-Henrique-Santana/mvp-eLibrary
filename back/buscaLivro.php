@@ -1,6 +1,6 @@
 <?php
 
-include 'classes/CrudLivro.php';
+include_once 'classes/CrudLivro.php';
 
 $tipo = $_POST['tipo'];
 $pesquisa = $_POST['pesquisa'];
