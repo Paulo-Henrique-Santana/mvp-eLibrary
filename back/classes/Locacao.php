@@ -64,7 +64,6 @@ Class Locacao
                                         ON aluno.id_aluno = locacao.id_aluno
                                         INNER JOIN status_locacao
                                         ON status_locacao.id_status_locacao = locacao.id_status_locacao
-                                        WHERE situacao_locacao <> 'entregue'
                                         ORDER BY situacao_locacao DESC");
         $locacoes = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $locacoes;

@@ -23,7 +23,7 @@
                     $l = new Locacao;
                     if ($_POST['acao'] == "alugar"){
                         if ($l->validaRg($_POST['rg']) == false){
-                            $_SESSION['validaRG'] = "rg n cadastrado";
+                            $_SESSION['validaRG'] = "RG não cadastrado";
                         } else if($l->verificaLocacoesAluno($_POST['rg']) >= 3){
                             $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
                         } else{
@@ -34,7 +34,7 @@
                     }
                     else {
                         if ($l->validaRg($_POST['rg']) == false){
-                            $_SESSION['validaRG'] = "rg n cadastrado";
+                            $_SESSION['validaRG'] = "Rg não cadastrado";
                         } else {
                             $idAluno = $l->validaRg($_POST['rg']);
                             header("location: devolverLivro.php?idAluno=$idAluno");
