@@ -17,6 +17,34 @@
 			<input type="text" name="pesquisa" id="">
 			<button>Pesquisar</button>
 		</form>
+        <?php
+			if (isset($_POST['pesquisa'])){
+				$aluno = new Aluno;
+				$registros = $aluno->pesquisarNomeAluno($_POST['pesquisa']);
+				if (count($registros) > 0){
+					echo '<table>
+					<tr>
+					  <th>Nome</th>
+					  <th>RG</th>
+					  <th>Telefone</th>
+				  	</tr>';
+		  
+					foreach($registros as $key => $value){
+						echo "<tr>";
+						foreach($value as $key => $value2){
+							if ($key != "id_aluno")
+							echo "<td>$value2</td>";
+						}
+						echo "<td><a href='#'>[Editar]</a></td>";
+						echo "</tr>";
+					}
+					echo "</table>";
+				}
+				else{
+					echo"Nenhum aluno encontrado";
+				}
+			}
+		?>
     </section>
 </body>
 </html>

@@ -80,6 +80,19 @@ Class Aluno
         $this->pdo->query("INSERT INTO aluno(nome_aluno, telefone_aluno, rg_aluno) VALUES('$this->nome', '$this->telefone', '$this->rg')");
 
     }
+
+    public function pesquisarNomeAluno($nome)
+    {
+        $pesquisa = $this->pdo->query("SELECT id_aluno,
+                                  nome_aluno,
+                                  rg_aluno,
+                                  telefone_aluno
+                            FROM aluno
+                            WHERE nome_aluno LIKE '%$nome%'");
+        $resultado = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+        
+    }
     
 
 
