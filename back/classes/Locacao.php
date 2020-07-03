@@ -105,6 +105,54 @@ Class Locacao
         $pesquisa = $this->pdo->query("UPDATE locacao SET id_status_locacao = 2 WHERE id_locacao = $idLocacao");
     }
 
+    public function buscarNomeLivro($nomeLivro)
+    {
+        $pesquisa = $this->pdo->query("SELECT livro.id_livro,
+                                                nome_livro,
+                                                nome_autor,
+                                                nome_editora,
+                                                count(id_exemplar)
+                                       FROM livro 
+                                       INNER JOIN editora 
+                                       ON editora.id_editora = livro.id_editora
+                                       INNER JOIN autor
+                                       ON autor.id_autor = livro.id_autor
+                                       INNER JOIN exemplar
+                                       ON livro.id_livro = exemplar.id_livro
+                                       WHERE id_exemplar NOT IN (SELECT id_exemplar
+                                        							 FROM locacao
+																 WHERE id_status_locacao = 1
+																 OR id_status_locacao = 3)
+                                       AND nome_livro LIKE '%$nomeLivro%'
+                                       GROUP BY id_livro");
+        $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $livros;
+    }
+
+    public function buscarNomeAutor($nomeAutor)
+    {
+        $pesquisa = $this->pdo->query("SELECT livro.id_livro,
+                                                nome_livro,
+                                                nome_autor,
+                                                nome_editora,
+                                                count(id_exemplar)
+                                        FROM livro 
+                                        INNER JOIN editora 
+                                        ON editora.id_editora = livro.id_editora
+                                        INNER JOIN autor
+                                        ON autor.id_autor = livro.id_autor
+                                        INNER JOIN exemplar
+                                        ON livro.id_livro = exemplar.id_livro
+                                        WHERE id_exemplar NOT IN (SELECT id_exemplar
+                                                                FROM locacao
+                                                                WHERE id_status_locacao = 1
+                                                                OR id_status_locacao = 3)
+                                        AND nome_autor LIKE '%$nomeAutor%'
+                                        GROUP BY id_livro");
+        $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $livros;
+    }
+
 }
 
 

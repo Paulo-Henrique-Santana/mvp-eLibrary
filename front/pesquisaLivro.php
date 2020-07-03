@@ -18,7 +18,7 @@
       	<?php
 			if (isset($_POST['pesquisa'])){
 				$l = new CrudLivro;
-				$livros = $l->buscarNomeLivro($_POST['pesquisa']);
+				$livros = $l->pesquisarNomeLivro($_POST['pesquisa']);
 				if (count($livros) > 0){
 					echo '<table>
 					<tr>

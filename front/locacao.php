@@ -1,5 +1,4 @@
 <?php
-    include_once '../back/classes/CrudLivro.php';
     include_once '../back/classes/Locacao.php';
     $locacao = new Locacao;
 ?>
@@ -44,11 +43,9 @@
                         $pesquisa = $_POST['pesquisa'];
 
                         if ($tipo == "livro"){
-                            $crudLivro = new CrudLivro;
-                            $livros = $crudLivro->buscarNomeLivro($pesquisa);
+                            $livros = $locacao->buscarNomeLivro($pesquisa);
                         } else if($tipo == "autor"){
-                            $crudLivro = new CrudLivro;
-                            $livros = $crudLivro->buscarNomeAutor($pesquisa);
+                            $livros = $locacao->buscarNomeAutor($pesquisa);
                         }
 
                         for ($i = 0; $i < count($livros); $i++) {
