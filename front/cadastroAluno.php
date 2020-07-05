@@ -17,6 +17,8 @@
     <section>
         <a href="index.html"><i class="  material-icons">arrow_back</i></a>
         <form method="POST">
+        <center><h2>Cadastro de Aluno</h2></center> <br>
+
             <h2>Nome :</h2> <input type="text" name="nome" required>
             <br>
             <h2>RG : </h2> <input type="number" name="rg" required>

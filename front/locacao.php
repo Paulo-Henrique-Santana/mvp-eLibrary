@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
-    <title>pesquisaAluno</title>
+    <title>Pesquisa livro</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
         Locacoes efetuadas: <?php echo $_GET['locacoes'] ?>
         <form method="post">
-            <h2>Pesquisar livro</h2>
+            <h2>Pesquisa de Livro</h2>
             <input type="radio" name="tipo" value="livro" checked>Livro
             <input type="radio" name="tipo" value="autor">Autor
             <br>
@@ -28,7 +28,7 @@
         </form>
         <form action="">
             <h2>Resultados da pesquisa</h2>
-            <table style="width: 100%;" id="table_resultados_pesquisa">
+            <table style="width: 100%;" id="table_resultados_pesquisa"> <br>
                 <tr>
                     <th>Livro</th>
                     <th>Autor</th>

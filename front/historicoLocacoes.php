@@ -12,12 +12,17 @@
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
  
-    <title>Locação</title>
+    <title>Histórico de locação</title>
   </head>
   <body>
     <section>
+      
       <a href="index.html"><i class="  material-icons">arrow_back</i></a>
-      <table>
+      <br>
+      <form action="">
+     <center><h2>Historico de locaçao</h2></center> <br>
+      <table  style="width: 100%;">
+      
         <tr>
           <th>Livro</th>
           <th>Aluno</th>
@@ -37,6 +42,7 @@
           }
         ?>
       </table>
+      </form>
     </section>
   </body>
 </html>

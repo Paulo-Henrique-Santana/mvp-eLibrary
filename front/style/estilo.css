@@ -99,6 +99,15 @@ h2 {
     font-family: organic;
 }
 
+tr {
+    text-align: center;
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+}
+
 .class_all {
     position: relative;
     top: 10em;

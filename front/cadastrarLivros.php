@@ -19,6 +19,8 @@
             <a href="index.html"><i class="  material-icons">arrow_back</i></a>
         </div>
         <form method="POST">
+        <center><h2>Cadastro de Livro</h2></center> <br>
+
 
             <h2>Nome do Livro:</h2> <input type="text" name="nomeLivro" required>
             <br>

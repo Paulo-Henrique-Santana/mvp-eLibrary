@@ -14,7 +14,8 @@
     <section>
         <a href="index.html"><i class="material-icons">arrow_back</i></a>
         <form method="post">
-			<input type="text" name="pesquisa" id="">
+			<center><h2>Pesquisar Aluno</h2></center><br>
+			<input type="text" name="pesquisa" id=""> <br>
 			<button>Pesquisar</button>
 		</form>
         <?php
@@ -22,18 +23,18 @@
 				$aluno = new Aluno;
 				$registros = $aluno->pesquisarNomeAluno($_POST['pesquisa']);
 				if (count($registros) > 0){
-					echo '<table>
-					<tr>
+					echo '<table style="width: 100%; text-align:center;">
+					<tr style="width: 100%;">
 					  <th>Nome</th>
 					  <th>RG</th>
 					  <th>Telefone</th>
 				  	</tr>';
 		  
 					foreach($registros as $key => $value){
-						echo "<tr>";
+						echo "<tr >";
 						foreach($value as $key => $value2){
 							if ($key != "id_aluno")
-							echo "<td>$value2</td>";
+							echo "<td style='text-align:center;'>$value2</td>";
 						}
 						echo "<td><a href='#'>[Editar]</a></td>";
 						echo "</tr>";
@@ -41,7 +42,7 @@
 					echo "</table>";
 				}
 				else{
-					echo"Nenhum aluno encontrado";
+					echo"<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum aluno encontrado</p>";
 				}
 			}
 		?>
