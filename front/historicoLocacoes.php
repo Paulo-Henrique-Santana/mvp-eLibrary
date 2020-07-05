@@ -4,8 +4,11 @@
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">
   <head>
+  <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
+ 
     <title>Locação</title>
   </head>
   <body>
