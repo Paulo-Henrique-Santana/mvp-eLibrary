@@ -17,16 +17,6 @@
   <body>
     <section>
       <a href="index.html"><i class="  material-icons">arrow_back</i></a>
-=======
-    <head>
-        <link rel="stylesheet" href="style/estilo.css">
-        <meta charset="utf-8">
-        <title>Locação</title>
-    </head>
-    <body>
-        <section>
-        <a href="index.html"><i class="material-icons">arrow_back</i></a>
->>>>>>> ee117a52050823f71f8cafc1daa1bda35a73a9ca
       <table>
         <tr>
           <th>Livro</th>
