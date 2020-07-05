@@ -153,6 +153,11 @@ Class Locacao
         return $livros;
     }
 
+    public function atualizarSituacaoLocacao()
+    {
+        $this->pdo->query("UPDATE locacao SET id_status_locacao = 3 WHERE dt_entrega < CURDATE() AND id_status_locacao = 1");
+    }
+
 }
 
 
