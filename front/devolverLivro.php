@@ -1,6 +1,7 @@
 <?php
     include_once '../back/classes/Locacao.php';
-    $l = new Locacao;
+    $locacao = new Locacao;
+    $locacao->atualizarSituacaoLocacao();
     $idAluno = $_GET['idAluno'];
 ?>
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
         <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
         <br>
             <?php
-                $registros = $l->listarLocacoesAluno($idAluno);
+                $registros = $locacao->listarLocacoesAluno($idAluno);
                 if (count($registros) > 0){
                     echo"<table>
                             <tr>
