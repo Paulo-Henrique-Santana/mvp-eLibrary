@@ -1,6 +1,5 @@
 <?php
-    include_once '../back/classes/Locacao.php';
-    $locacao = new Locacao;
+    require_once '../back/classes/Locacao.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">
@@ -41,7 +40,7 @@
                     if (isset($_POST['tipo']) && isset($_POST['pesquisa'])){
                         $tipo = $_POST['tipo'];
                         $pesquisa = $_POST['pesquisa'];
-
+                        $locacao = new Locacao;
                         if ($tipo == "livro"){
                             $livros = $locacao->buscarNomeLivro($pesquisa);
                         } else if($tipo == "autor"){

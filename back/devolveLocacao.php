@@ -1,6 +1,6 @@
 <?php
 
-include_once '../back/classes/Locacao.php';
+require_once '../back/classes/Locacao.php';
 
 if (isset($_GET['idAluno']) && isset($_GET['locacao'])){
     $idLocacao = $_GET['locacao'];

@@ -1,6 +1,6 @@
 <?php
 
-include_once '/classes/Locacao.php';
+require_once '/classes/Locacao.php';
 
 $l = new Locacao;
 

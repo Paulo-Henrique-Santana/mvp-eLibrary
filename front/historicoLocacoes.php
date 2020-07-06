@@ -1,11 +1,9 @@
 <?php
-    include_once '../back/classes/Locacao.php';
-    $locacao = new Locacao;
-    $locacao->atualizarSituacaoLocacao();
+    require_once '../back/classes/Locacao.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">
-<<<<<<< HEAD
+
   <head>
   <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -31,8 +29,9 @@
           <th>Situação</th>
         </tr>
         <?php
-          $l = new Locacao;
-          $locacoes = $l->listarLocacoes();
+          $locacao = new Locacao;
+          $locacao->atualizarSituacaoLocacao();
+          $locacoes = $locacao->listarLocacoes();
           foreach ($locacoes as $key => $value) {
             echo "<tr>";
             foreach ($value as $key => $value) {

@@ -1,8 +1,5 @@
 <?php
-    include_once '../back/classes/Locacao.php';
-    $locacao = new Locacao;
-    $locacao->atualizarSituacaoLocacao();
-    $idAluno = $_GET['idAluno'];
+    require_once '../back/classes/Locacao.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt/br" dir="ltr">
@@ -19,6 +16,9 @@
         <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
         <br>
             <?php
+                $locacao = new Locacao;
+                $locacao->atualizarSituacaoLocacao();
+                $idAluno = $_GET['idAluno'];
                 $registros = $locacao->listarLocacoesAluno($idAluno);
                 if (count($registros) > 0){
                     echo"<table>

@@ -1,5 +1,5 @@
 <?php
-    include_once '../back/classes/CrudLivro.php';
+    require_once '../back/classes/CrudLivro.php';
     session_start();
 ?>
 <!DOCTYPE html>

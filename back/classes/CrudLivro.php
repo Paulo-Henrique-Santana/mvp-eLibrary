@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Livro.php';
+require_once 'Livro.php';
 
 Class CrudLivro extends Livro
 {
