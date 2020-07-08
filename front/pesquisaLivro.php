@@ -40,9 +40,8 @@
 						if ($key != "id_livro")
 						echo "<td>$value2</td>";
 					}
-					echo "<td><a href='#'>[Excluir]</a></td>
-							<td><a href='#'>[Editar]</a></td>
-							</tr>";
+					echo "<td><a href='#'>[Editar]</a></td>
+						</tr>";
 				}
 				echo "</table>";
 			}

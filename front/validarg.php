@@ -22,29 +22,24 @@
             <?php 
                 if (isset($_POST['rg']) && isset($_POST['acao'])){
                     $l = new Locacao;
-                    if ($_POST['acao'] == "alugar"){
-                        if ($l->validaRg($_POST['rg']) == false){
-                            $_SESSION['validaRG'] = "RG não cadastrado";
-                        } else if($l->verificaLocacoesAluno($_POST['rg']) >= 3){
-                            $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
-                        } else{
-                            $idAluno = $l->validaRg($_POST['rg']);
-                            $locacoesAluno = $l->verificaLocacoesAluno($_POST['rg']);
-                            header("location: locacao.php?idAluno=$idAluno&locacoes=$locacoesAluno");
+                    if ($l->validaRg($_POST['rg']) == false) {
+                        echo $_SESSION['validaRG'] = "RG não cadastrado";
+                        unset($_SESSION['validaRG']);
+                    } else {
+                        $idAluno = $l->validaRg($_POST['rg']);
+                        if ($_POST['acao'] == "alugar") {
+                            if($l->verificaLocacoesAluno($_POST['rg']) >= 3){
+                                echo $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
+                                unset($_SESSION['validaRG']);
+                            } else{
+                                $locacoesAluno = $l->verificaLocacoesAluno($_POST['rg']);
+                                header("location: locacao.php?idAluno=$idAluno&locacoes=$locacoesAluno");
+                            }
                         }
-                    }
-                    else {
-                        if ($l->validaRg($_POST['rg']) == false){
-                            $_SESSION['validaRG'] = "Rg não cadastrado";
-                        } else {
-                            $idAluno = $l->validaRg($_POST['rg']);
+                        else {
                             header("location: devolverLivro.php?idAluno=$idAluno");
                         }
                     }
-                }
-                if(isset($_SESSION['validaRG'])){
-                    echo "<br>".$_SESSION['validaRG']."<br>";
-                    unset($_SESSION['validaRG']);
                 }
             ?>
             <br>

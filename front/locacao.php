@@ -25,18 +25,8 @@
             <button>Pesquisar</button>
             <button type="reset">Limpar</button>
         </form>
-        <form action="">
-            <h2>Resultados da pesquisa</h2>
-            <table style="width: 100%;" id="table_resultados_pesquisa"> <br>
-                <tr>
-                    <th>Livro</th>
-                    <th>Autor</th>
-                    <th>Editora</th>
-                    <th>Exemplares </th>
-                    <th>Alugar</th>
-                </tr>
+        <form>
                 <?php
-
                     if (isset($_POST['tipo']) && isset($_POST['pesquisa'])){
                         $tipo = $_POST['tipo'];
                         $pesquisa = $_POST['pesquisa'];
@@ -46,6 +36,16 @@
                         } else if($tipo == "autor"){
                             $livros = $locacao->buscarNomeAutor($pesquisa);
                         }
+
+                        echo '<h2>Resultados da pesquisa</h2>
+                            <table style="width: 100%;" id="table_resultados_pesquisa"> <br>
+                                <tr>
+                                    <th>Livro</th>
+                                    <th>Autor</th>
+                                    <th>Editora</th>
+                                    <th>Exemplares </th>
+                                    <th>Alugar</th>
+                                </tr>';
 
                         for ($i = 0; $i < count($livros); $i++) {
                             echo "<tr>";
@@ -72,16 +72,6 @@
                 ?>
             </table>
             <br>
-            <!-- <table style="width: 100%;">
-                <h2>Livro Selecionados</h2>
-                <tr>
-                    <th>Livro </th>
-                    <th>Autor</th>
-                    <th>Editora</th>
-                    <th>Confirmar</th>
-                </tr>
-            </table> -->
-
         </form>
     </section>
 </body>
