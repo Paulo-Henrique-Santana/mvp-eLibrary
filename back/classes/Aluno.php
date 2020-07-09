@@ -91,10 +91,12 @@ Class Aluno
                             WHERE nome_aluno LIKE '%$nome%'");
         $resultado = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
-        
     }
     
-
+    public function atualizarDados($id, $nome, $rg, $telefone)
+    {
+        $this->pdo->query("UPDATE aluno SET nome_aluno = '$nome', telefone_aluno = '$telefone', rg_aluno = '$rg' WHERE id_aluno = '$id'");
+    }
 
 }
 

@@ -15,7 +15,7 @@
         <a href="index.html"><i class="material-icons">arrow_back</i></a>
         <form method="post">
 			<center><h2>Pesquisar Aluno</h2></center><br>
-			<input type="text" name="pesquisa" id=""> <br>
+			<input type="text" name="pesquisa" id="" required> <br>
 			<button>Pesquisar</button>
 		</form>
         <?php
@@ -29,15 +29,20 @@
 					  <th>RG</th>
 					  <th>Telefone</th>
 				  	</tr>';
-		  
-					foreach($registros as $key => $value){
-						echo "<tr >";
-						foreach($value as $key => $value2){
-							if ($key != "id_aluno")
-							echo "<td style='text-align:center;'>$value2</td>";
+					for ($i=0; $i < count($registros); $i++){
+						echo "<tr>";
+						foreach ($registros[$i] as $key => $value2) {
+							if ($key != "id_aluno"){
+								echo "<td style='text-align:center;'>$value2</td>";
+							}
 						}
-						echo "<td><a href='#'>[Editar]</a></td>";
-						echo "</tr>";
+						?>
+						<td><a href="editarAluno.php?<?php echo "id=".$registros[$i]['id_aluno'].
+																"&nome=".$registros[$i]['nome_aluno'].
+																"&rg=".$registros[$i]['rg_aluno'].
+																"&telefone=".$registros[$i]['telefone_aluno']; ?>">Editar</a>
+						</tr>
+						<?php
 					}
 					echo "</table>";
 				}
