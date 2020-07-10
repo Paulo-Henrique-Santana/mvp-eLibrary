@@ -36,8 +36,9 @@
                         } else if($tipo == "autor"){
                             $livros = $locacao->buscarNomeAutor($pesquisa);
                         }
-
-                        echo '<h2>Resultados da pesquisa</h2>
+                        
+                        if (count($livros) > 0) {
+                            echo '<h2>Resultados da pesquisa</h2>
                             <table style="width: 100%;" id="table_resultados_pesquisa"> <br>
                                 <tr>
                                     <th>Livro</th>
@@ -47,26 +48,29 @@
                                     <th>Alugar</th>
                                 </tr>';
 
-                        for ($i = 0; $i < count($livros); $i++) {
-                            echo "<tr>";
-                            foreach ($livros[$i] as $key => $value) {
-                                if ($key != "id_livro") {
-                                    echo "<td>$value</td>";
+                            for ($i = 0; $i < count($livros); $i++) {
+                                echo "<tr>";
+                                foreach ($livros[$i] as $key => $value) {
+                                    if ($key != "id_livro") {
+                                        echo "<td>$value</td>";
+                                    }
                                 }
+                                ?>
+                                <td>
+                                    <a href="../back/insereLocacao.php?<?php 
+                                                            $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
+                                                            echo "exemplar=".$exemplar.
+                                                                "&idAluno=".$_GET['idAluno'].
+                                                                "&locacoes=".$_GET['locacoes'];
+                                                        ?>">
+                                        Alugar
+                                    </a>
+                                </td>
+                                <?php
+                                echo "</tr>";
                             }
-                            ?>
-                            <td>
-                                <a href="../back/insereLocacao.php?<?php 
-                                                        $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
-                                                        echo "exemplar=".$exemplar.
-                                                             "&idAluno=".$_GET['idAluno'].
-                                                             "&locacoes=".$_GET['locacoes'];
-                                                     ?>">
-                                    Alugar
-                                </a>
-                            </td>
-                            <?php
-                            echo "</tr>";
+                        } else {
+                            echo "Nenhum livro encontrado";
                         }
                     }
                 ?>

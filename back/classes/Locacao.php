@@ -28,7 +28,7 @@ Class Locacao
                                         INNER JOIN aluno
                                         ON aluno.id_aluno = locacao.id_aluno
                                         WHERE rg_aluno = '$rg'
-                                        AND id_status_locacao <> 2");
+                                        AND id_status_locacao <> 3");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado["qtd_locacoes"];
 
@@ -64,7 +64,7 @@ Class Locacao
                                         ON aluno.id_aluno = locacao.id_aluno
                                         INNER JOIN status_locacao
                                         ON status_locacao.id_status_locacao = locacao.id_status_locacao
-                                        ORDER BY situacao_locacao DESC");
+                                        ORDER BY locacao.id_status_locacao");
         $locacoes = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $locacoes;
     }
@@ -75,7 +75,7 @@ Class Locacao
         $dtLocacao = date('Y/m/d');
         $dtEntrega = date('Y/m/d', strtotime(' + 7 days'));
         $this->pdo->query("INSERT INTO locacao(dt_locacao, dt_entrega, id_aluno, id_status_locacao, id_exemplar)
-        VALUES('$dtLocacao', '$dtEntrega', '$idAluno', 1, '$idExemplar')");
+        VALUES('$dtLocacao', '$dtEntrega', '$idAluno', 2, '$idExemplar')");
     }
 
     public function listarLocacoesAluno($id)
@@ -95,14 +95,14 @@ Class Locacao
                                         INNER JOIN aluno
                                         ON aluno.id_aluno = locacao.id_aluno
                                         WHERE aluno.id_aluno = $id
-                                        AND locacao.id_status_locacao <> 2");
+                                        AND locacao.id_status_locacao <> 3");
         $resultado = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
 
     public function devolverLocacao($idLocacao)
     {
-        $pesquisa = $this->pdo->query("UPDATE locacao SET id_status_locacao = 2 WHERE id_locacao = $idLocacao");
+        $pesquisa = $this->pdo->query("UPDATE locacao SET id_status_locacao = 3 WHERE id_locacao = $idLocacao");
     }
 
     public function buscarNomeLivro($nomeLivro)
@@ -122,7 +122,7 @@ Class Locacao
                                        WHERE id_exemplar NOT IN (SELECT id_exemplar
                                         							 FROM locacao
 																 WHERE id_status_locacao = 1
-																 OR id_status_locacao = 3)
+																 OR id_status_locacao = 2)
                                        AND nome_livro LIKE '%$nomeLivro%'
                                        GROUP BY id_livro");
         $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
@@ -146,7 +146,7 @@ Class Locacao
                                         WHERE id_exemplar NOT IN (SELECT id_exemplar
                                                                 FROM locacao
                                                                 WHERE id_status_locacao = 1
-                                                                OR id_status_locacao = 3)
+                                                                OR id_status_locacao = 2)
                                         AND nome_autor LIKE '%$nomeAutor%'
                                         GROUP BY id_livro");
         $livros = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
@@ -155,7 +155,7 @@ Class Locacao
 
     public function atualizarSituacaoLocacao()
     {
-        $this->pdo->query("UPDATE locacao SET id_status_locacao = 3 WHERE dt_entrega < CURDATE() AND id_status_locacao = 1");
+        $this->pdo->query("UPDATE locacao SET id_status_locacao = 1 WHERE dt_entrega < CURDATE() AND id_status_locacao = 2");
     }
 
 }
