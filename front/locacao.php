@@ -61,6 +61,7 @@
                                                             $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
                                                             echo "exemplar=".$exemplar.
                                                                 "&idAluno=".$_GET['idAluno'].
+                                                                "&rg=".$_GET['rg'].
                                                                 "&locacoes=".$_GET['locacoes'];
                                                         ?>">
                                         Alugar

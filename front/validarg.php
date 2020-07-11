@@ -21,19 +21,20 @@
             <input type="text" name="rg" placeholder="Digite seu RG" required>
             <?php 
                 if (isset($_POST['rg']) && isset($_POST['acao'])){
+                    $rg = $_POST['rg'];
                     $l = new Locacao;
                     if ($l->validaRg($_POST['rg']) == false) {
                         echo $_SESSION['validaRG'] = "RG não cadastrado";
                         unset($_SESSION['validaRG']);
                     } else {
-                        $idAluno = $l->validaRg($_POST['rg']);
+                        $idAluno = $l->validaRg($rg );
                         if ($_POST['acao'] == "alugar") {
-                            if($l->verificaLocacoesAluno($_POST['rg']) >= 3){
+                            if($l->verificaLocacoesAluno($rg ) >= 3){
                                 echo $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
                                 unset($_SESSION['validaRG']);
                             } else{
-                                $locacoesAluno = $l->verificaLocacoesAluno($_POST['rg']);
-                                header("location: locacao.php?idAluno=$idAluno&locacoes=$locacoesAluno");
+                                $locacoesAluno = $l->verificaLocacoesAluno($rg);
+                                header("location: locacao.php?idAluno=$idAluno&rg=$rg&locacoes=$locacoesAluno");
                             }
                         }
                         else {
