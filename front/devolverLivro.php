@@ -22,6 +22,7 @@
                 $registros = $locacao->listarLocacoesAluno($idAluno);
                 $count = count($registros);
                 if ($count > 0){
+                    date_default_timezone_set('America/Sao_Paulo');
                     echo'<table>
                             <tr>
                                 <th>Livro</th>
@@ -32,8 +33,10 @@
                     for ($i = 0; $i < $count; $i++) {
                         echo"<tr>";
                         foreach ($registros[$i] as $key => $value) {
-                            if ($key != 'id_locacao'){
-                                echo"<td>$value</td>";
+                            if ($key == 'dt_locacao' || $key == 'dt_entrega') {
+                                echo "<td>".date('d/m/Y', strtotime($value))."</td>";
+                            } elseif ($key != 'id_locacao') {
+                                echo "<td>$value</td>";
                             }
                         }
                         echo"<td><a href=\"../back/devolveLocacao.php?idAluno=$idAluno&locacao=".$registros[$i]['id_locacao']."\">Devolver</a></td>";
