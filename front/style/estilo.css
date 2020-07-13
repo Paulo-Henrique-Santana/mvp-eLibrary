@@ -22,7 +22,6 @@ body {
     background-size: 100%;
     background-attachment: fixed;
     align-items: center;
-    text-align: center;
 }
 
 input[type=text],
