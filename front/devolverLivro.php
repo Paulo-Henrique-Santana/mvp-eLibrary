@@ -46,7 +46,7 @@
                     }
                     echo'</table>';
                 } else{
-                    echo'Aluno não possui locações';
+                    echo'<p style="text-align:center; color:red; font-size:1.3em;"> Aluno não possui locações</p>';
                 }
             ?>
         </table>

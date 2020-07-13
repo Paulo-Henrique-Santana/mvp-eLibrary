@@ -15,7 +15,7 @@
         <a href="index.html"><i class="material-icons">arrow_back</i></a>
         <form method="post">
 			<center><h2>Pesquisar Aluno</h2></center><br>
-			<input type="text" name="pesquisa" id="" required> <br>
+			<input type="text" name="pesquisa" id=""> <br>
 			<button>Pesquisar</button>
 		</form>
         <?php

@@ -39,7 +39,7 @@
                     if ($l->cadastraLivro() == false){
                         echo "<p style='text-align:center; color:red; font-size:1.3em;'>Livro já foi cadastro</p>";
                     } else{
-                        echo "<p style='text-align:center; color:green; font-size:1.3em;'>Livro cadstrado com sucesso</p>";
+                        echo "<p style='text-align:center; color:green; font-size:1.3em;'>Livro cadastrado com sucesso</p>";
                     }
                 }
 

@@ -31,11 +31,11 @@
             <?php 
                 if(isset($_POST['nome']) && isset($_POST['rg']) && isset($_POST['telefone'])){
                     if($nome == $_POST['nome'] && $rg == $_POST['rg'] && $tel == $_POST['telefone']){
-                        echo "nenhum campo foi alterado<br>";
+                        echo "Nenhum campo foi alterado<br>";
                     } else{
                         $aluno = new Aluno;
                         $aluno->atualizarDados($id, $_POST['nome'], $_POST['rg'], $_POST['telefone']);
-                        header('location: pesquisarAluno.php');
+                        echo  "<p style='text-align:center; color:green; font-size:1.3em;'>Aluno editado com sucesso <p> <br>" ; 
                     }
                 }
             ?>

@@ -37,14 +37,11 @@
                         $_SESSION['cadastraAluno'] = "Esse Telefone já foi cadastrado";
                     }elseif ($a->validaRg() == false && $a->validaTelefone() == false) {
                         $a->cadastraAluno();
-                        $_SESSION['cadastraAluno'] = "Aluno cadastrado com sucesso";
+                        echo " <p style='text-align:center; color:green; font-size:1.3em;'>Aluno cadastrado com sucesso </p>";
                     }
                 }
 
-                if(isset($_SESSION['cadastraAluno'])){
-                    echo "<br>".$_SESSION['cadastraAluno']."<br>";
-                    unset($_SESSION['cadastraAluno']);
-                }
+              
             ?>
             <button>Enivar</button>
         </form>
