@@ -26,7 +26,7 @@
                     if ($l->validaRg($_POST['rg']) == false) {
                         echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>RG não cadastrado</p>";
                     } else {
-                        $idAluno = $l->validaRg($rg );
+                        $idAluno = $l->validaRg($rg);
                         if ($_POST['acao'] == "alugar") {
                             if($l->verificaLocacoesAluno($rg) >= 3){
                                 echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>Aluno já possui 3 livros alugados</p>";

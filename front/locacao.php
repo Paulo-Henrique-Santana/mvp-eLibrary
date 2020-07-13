@@ -27,51 +27,55 @@
         </form>
         <form>
                 <?php
-                    if (isset($_POST['tipo']) && isset($_POST['pesquisa'])){
-                        $tipo = $_POST['tipo'];
-                        $pesquisa = $_POST['pesquisa'];
-                        $locacao = new Locacao;
-                        if ($tipo == "livro"){
-                            $livros = $locacao->buscarNomeLivro($pesquisa);
-                        } else if($tipo == "autor"){
-                            $livros = $locacao->buscarNomeAutor($pesquisa);
-                        }
-                        
-                        if (count($livros) > 0) {
-                            echo '<h2>Resultados da pesquisa</h2>
-                            <table style="width: 100%;" id="table_resultados_pesquisa"> <br>
-                                <tr>
-                                    <th>Livro</th>
-                                    <th>Autor</th>
-                                    <th>Editora</th>
-                                    <th>Exemplares </th>
-                                    <th>Alugar</th>
-                                </tr>';
-
-                            for ($i = 0; $i < count($livros); $i++) {
-                                echo "<tr>";
-                                foreach ($livros[$i] as $key => $value) {
-                                    if ($key != "id_livro") {
-                                        echo "<td>$value</td>";
-                                    }
-                                }
-                                ?>
-                                <td>
-                                    <a href="../back/insereLocacao.php?<?php 
-                                                            $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
-                                                            echo "exemplar=".$exemplar.
-                                                                "&idAluno=".$_GET['idAluno'].
-                                                                "&rg=".$_GET['rg'].
-                                                                "&locacoes=".$_GET['locacoes'];
-                                                        ?>">
-                                        Alugar
-                                    </a>
-                                </td>
-                                <?php
-                                echo "</tr>";
+                    if ($_GET['locacoes'] >= 3) {
+                        echo "<p style='text-align:center; color:red; font-size:1.3em;'>Aluno já possui 3 livros alugados</p>";
+                    } else {
+                        if (isset($_POST['tipo']) && isset($_POST['pesquisa'])){
+                            $tipo = $_POST['tipo'];
+                            $pesquisa = $_POST['pesquisa'];
+                            $locacao = new Locacao;
+                            if ($tipo == "livro"){
+                                $livros = $locacao->buscarNomeLivro($pesquisa);
+                            } else if($tipo == "autor"){
+                                $livros = $locacao->buscarNomeAutor($pesquisa);
                             }
-                        } else {
-                            echo "<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum livro encontrado</p>";
+                            
+                            if (count($livros) > 0) {
+                                echo '<h2>Resultados da pesquisa</h2>
+                                <table style="width: 100%;" id="table_resultados_pesquisa"> <br>
+                                    <tr>
+                                        <th>Livro</th>
+                                        <th>Autor</th>
+                                        <th>Editora</th>
+                                        <th>Exemplares </th>
+                                        <th>Alugar</th>
+                                    </tr>';
+    
+                                for ($i = 0; $i < count($livros); $i++) {
+                                    echo "<tr>";
+                                    foreach ($livros[$i] as $key => $value) {
+                                        if ($key != "id_livro") {
+                                            echo "<td>$value</td>";
+                                        }
+                                    }
+                                    ?>
+                                    <td>
+                                        <a href="../back/insereLocacao.php?<?php 
+                                                                $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
+                                                                echo "exemplar=".$exemplar.
+                                                                    "&idAluno=".$_GET['idAluno'].
+                                                                    "&rg=".$_GET['rg'].
+                                                                    "&locacoes=".$_GET['locacoes'];
+                                                            ?>">
+                                            Alugar
+                                        </a>
+                                    </td>
+                                    <?php
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum livro encontrado</p>";
+                            }
                         }
                     }
                 ?>
