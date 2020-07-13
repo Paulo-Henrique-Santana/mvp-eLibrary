@@ -71,7 +71,7 @@
                                 echo "</tr>";
                             }
                         } else {
-                            echo "Nenhum livro encontrado";
+                            echo "<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum livro encontrado</p>";
                         }
                     }
                 ?>

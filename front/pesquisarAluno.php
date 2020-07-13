@@ -28,6 +28,7 @@
 					  <th>Nome</th>
 					  <th>RG</th>
 					  <th>Telefone</th>
+					  <th>Editar</th>
 				  	</tr>';
 					for ($i=0; $i < count($registros); $i++){
 						echo "<tr>";

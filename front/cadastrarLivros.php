@@ -8,7 +8,7 @@
 <head>
 
     <link rel="icon" href=" https://pngimage.net/wp-content/uploads/2018/06/livro-icon-png.png">
-    <title>Cadastro Livro</title>
+    <title>Cadastro de Livro</title>
     <link rel="stylesheet" href="style/estilo.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -37,14 +37,10 @@
                     $l->setNomeEditora($_POST["nomeEditora"]);
                     $l->setQtdExemplar($_POST["qtd"]);
                     if ($l->cadastraLivro() == false){
-                        $_SESSION['cadastraLivro'] = "Livro já está cadastrado";
+                        echo "<p style='text-align:center; color:red; font-size:1.3em;'>Livro já foi cadastro</p>";
                     } else{
-                        $_SESSION['cadastraLivro'] = "Livro cadstrado com sucesso";
+                        echo "<p style='text-align:center; color:green; font-size:1.3em;'>Livro cadstrado com sucesso</p>";
                     }
-                }
-                if (isset($_SESSION['cadastraLivro'])){
-                    echo "<br>".$_SESSION['cadastraLivro']."<br>";
-                    unset($_SESSION['cadastraLivro']);
                 }
 
             ?>

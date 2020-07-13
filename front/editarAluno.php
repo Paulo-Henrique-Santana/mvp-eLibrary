@@ -13,14 +13,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
-    <title>sei la</title>
+    <title>Editar Aluno</title>
 </head>
 
 <body>
     <section>
         <a href="index.html"><i class="material-icons">arrow_back</i></a>
         <form method="POST">
-        <center><h2>sei la</h2></center> 
+        <center><h2>Editar Aluno</h2></center> 
         <br>
             <h2>Nome :</h2> <input type="text" name="nome" value="<?php echo $nome; ?>" required>
             <br>

@@ -15,6 +15,7 @@
     <section>
         <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
         <br>
+        <center><h2>Devolução de Livros</h2></center> <br>
             <?php
                 $locacao = new Locacao;
                 $locacao->atualizarSituacaoLocacao();
@@ -23,12 +24,13 @@
                 $count = count($registros);
                 if ($count > 0){
                     date_default_timezone_set('America/Sao_Paulo');
-                    echo'<table>
+                    echo'<table style="width: 100%;">
                             <tr>
                                 <th>Livro</th>
                                 <th>Data de Locação</th>
                                 <th>Data de Entrega</th>
                                 <th>Situação</th>
+                                <th>Devolver</th>
                             </tr>';
                     for ($i = 0; $i < $count; $i++) {
                         echo"<tr>";

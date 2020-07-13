@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
  
-    <title>Histórico de locação</title>
+    <title>Histórico de Locações</title>
   </head>
   <body>
     <section>
@@ -19,7 +19,7 @@
       <a href="index.html"><i class="  material-icons">arrow_back</i></a>
       <br>
       <form action="">
-      <center><h2>Historico de locaçao</h2></center> <br>
+      <center><h2>Histórico de Locações</h2></center> <br>
       <table  style="width: 100%;">
       
         <tr>

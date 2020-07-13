@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
-    <title>Pesquisa livro</title>
+    <title>Pesquisa Livro</title>
   </head>
   <body>
     <section>
@@ -30,7 +30,7 @@
 				  <th>Autor</th>
 				  <th>Editora</th>
 				  <th>Exemplares</th>
-				  <th colspan="2">AÇÃO</th>
+				  <th>Editar</th>
 				  </tr>';
 	  
 				  for ($i=0; $i < count($livros); $i++){
@@ -51,7 +51,7 @@
 				echo "</table>";
 			}
 			else{
-				echo"Nenhum livro encontrado";
+				echo"<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum livro encontrado</p>";
 			}
 		}
 		?>

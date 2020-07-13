@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
-    <title>Cadastro Aluno</title>
+    <title>Cadastro de Aluno</title>
 </head>
 
 <body>
