@@ -24,14 +24,12 @@
                     $rg = $_POST['rg'];
                     $l = new Locacao;
                     if ($l->validaRg($_POST['rg']) == false) {
-                        echo $_SESSION['validaRG'] = "RG não cadastrado";
-                        unset($_SESSION['validaRG']);
+                        echo "<br>RG não cadastrado";
                     } else {
                         $idAluno = $l->validaRg($rg );
                         if ($_POST['acao'] == "alugar") {
-                            if($l->verificaLocacoesAluno($rg ) >= 3){
-                                echo $_SESSION['validaRG'] = "Aluno já possui 3 livros alugados";
-                                unset($_SESSION['validaRG']);
+                            if($l->verificaLocacoesAluno($rg) >= 3){
+                                echo "<br>Aluno já possui 3 livros alugados";
                             } else{
                                 $locacoesAluno = $l->verificaLocacoesAluno($rg);
                                 header("location: locacao.php?idAluno=$idAluno&rg=$rg&locacoes=$locacoesAluno");

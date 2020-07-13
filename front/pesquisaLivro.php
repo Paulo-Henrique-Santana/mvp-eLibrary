@@ -33,15 +33,20 @@
 				  <th colspan="2">AÇÃO</th>
 				  </tr>';
 	  
-				foreach($livros as $key => $value){
-					
+				  for ($i=0; $i < count($livros); $i++){
 					echo "<tr style='text-align:center;'>";
-					foreach($value as $key => $value2){
+					foreach($livros[$i] as $key => $value2){
 						if ($key != "id_livro")
 						echo "<td>$value2</td>";
 					}
-					echo "<td><a href='#'>[Editar]</a></td>
-						</tr>";
+					?>
+					<td><a href="editarLivro.php?<?php echo "id=".$livros[$i]['id_livro'].
+															"&livro=".$livros[$i]['nome_livro'].
+															"&autor=".$livros[$i]['nome_autor'].
+															"&editora=".$livros[$i]['nome_editora'].
+															"&exemplares=".$livros[$i]['qtd_exemplar'];?>">Editar</a>
+					</tr>
+					<?php
 				}
 				echo "</table>";
 			}
