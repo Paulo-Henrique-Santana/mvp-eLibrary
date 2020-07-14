@@ -41,7 +41,7 @@ DESC autor;
 
 CREATE TABLE status_locacao(
 	id_status_locacao INT(10) AUTO_INCREMENT,
-	situacao_locacao VARCHAR(10) NOT NULL,
+	situacao_locacao VARCHAR(15) NOT NULL,
 	PRIMARY KEY (id_status_locacao)
 );
 DESC status_locacao;
