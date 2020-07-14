@@ -81,14 +81,14 @@ Class Aluno
 
     }
 
-    public function pesquisarNomeAluno($nome)
+    public function pesquisarRgAluno($rg)
     {
         $pesquisa = $this->pdo->query("SELECT id_aluno,
                                   nome_aluno,
                                   rg_aluno,
                                   telefone_aluno
                             FROM aluno
-                            WHERE nome_aluno LIKE '%$nome%'");
+                            WHERE rg_aluno LIKE '%$rg%'");
         $resultado = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }

@@ -21,7 +21,7 @@
         <?php
 			if (isset($_POST['pesquisa'])){
 				$aluno = new Aluno;
-				$registros = $aluno->pesquisarNomeAluno($_POST['pesquisa']);
+				$registros = $aluno->pesquisarRgAluno($_POST['pesquisa']);
 				if (count($registros) > 0){
 					echo '<table style="width: 100%; text-align:center;">
 					<tr style="width: 100%;">
