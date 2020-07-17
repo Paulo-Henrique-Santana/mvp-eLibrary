@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
     <meta charset="utf-8">
-    <title>Valida RG</title>
+    <title>Valida RA</title>
 </head>
 
 <body>
     <section>
-        <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
+        <a href="validara.php"><i class="material-icons">arrow_back</i></a>
         <br>
         <center><h2>Devolução de Livros</h2></center> <br>
             <?php

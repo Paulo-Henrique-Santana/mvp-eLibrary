@@ -18,21 +18,21 @@
         <form method="POST">
         <h2>Locação de Livros</h2>
             <br>
-            <input type="text" name="rg" placeholder="Digite seu RG" required>
+            <input type="text" name="ra" placeholder="Digite o RA do aluno" required>
             <?php 
-                if (isset($_POST['rg']) && isset($_POST['acao'])){
-                    $rg = $_POST['rg'];
+                if (isset($_POST['ra']) && isset($_POST['acao'])){
+                    $ra = $_POST['ra'];
                     $l = new Locacao;
-                    if ($l->validaRg($_POST['rg']) == false) {
-                        echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>RG não cadastrado</p>";
+                    if ($l->validaRa($_POST['ra']) == false) {
+                        echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>RA não cadastrado</p>";
                     } else {
-                        $idAluno = $l->validaRg($rg);
+                        $idAluno = $l->validaRa($ra);
                         if ($_POST['acao'] == "alugar") {
-                            if($l->verificaLocacoesAluno($rg) >= 3){
+                            if($l->verificaLocacoesAluno($ra) >= 3){
                                 echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>Aluno já possui 3 livros alugados</p>";
                             } else{
-                                $locacoesAluno = $l->verificaLocacoesAluno($rg);
-                                header("location: locacao.php?idAluno=$idAluno&rg=$rg&locacoes=$locacoesAluno");
+                                $locacoesAluno = $l->verificaLocacoesAluno($ra);
+                                header("location: locacao.php?idAluno=$idAluno&ra=$ra&locacoes=$locacoesAluno");
                             }
                         }
                         else {

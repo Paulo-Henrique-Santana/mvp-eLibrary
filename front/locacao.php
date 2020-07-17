@@ -14,7 +14,7 @@
 
 <body>
     <section>
-        <a href="validarg.php"><i class="material-icons">arrow_back</i></a>
+        <a href="validara.php"><i class="material-icons">arrow_back</i></a>
         Locacoes efetuadas: <?php echo $_GET['locacoes'] ?>
         <form method="post">
             <h2>Pesquisa de Livro</h2>
@@ -64,7 +64,7 @@
                                                                 $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
                                                                 echo "exemplar=".$exemplar.
                                                                     "&idAluno=".$_GET['idAluno'].
-                                                                    "&rg=".$_GET['rg'].
+                                                                    "&ra=".$_GET['ra'].
                                                                     "&locacoes=".$_GET['locacoes'];
                                                             ?>">
                                             Alugar

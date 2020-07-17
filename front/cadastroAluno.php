@@ -21,21 +21,21 @@
 
             <h2>Nome :</h2> <input type="text" name="nome" required>
             <br>
-            <h2>RG : </h2> <input type="number" name="rg" required>
+            <h2>RA : </h2> <input type="number" name="ra" required>
             <br>
             <h2>Numero :</h2> <input type="tel" name="telefone" maxlength="15" required>
             <br>
             <?php 
-                if (isset($_POST['nome']) && isset($_POST['rg']) && isset($_POST['telefone'])){
+                if (isset($_POST['nome']) && isset($_POST['ra']) && isset($_POST['telefone'])){
                     $a = new Aluno;
                     $a->setNome($_POST['nome']);
-                    $a->setRg($_POST['rg']);
+                    $a->setRa($_POST['ra']);
                     $a->setTelefone($_POST['telefone']);
-                    if ($a->validaRg() == true) {
-                        $_SESSION['cadastraAluno'] = "Esse RG já está cadastrado";
+                    if ($a->validaRa() == true) {
+                        $_SESSION['cadastraAluno'] = "Esse RA já está cadastrado";
                     }elseif ($a->validaTelefone() == true) {
                         $_SESSION['cadastraAluno'] = "Esse Telefone já foi cadastrado";
-                    }elseif ($a->validaRg() == false && $a->validaTelefone() == false) {
+                    }elseif ($a->validaRa() == false && $a->validaTelefone() == false) {
                         $a->cadastraAluno();
                         echo " <p style='text-align:center; color:green; font-size:1.3em;'>Aluno cadastrado com sucesso </p>";
                     }

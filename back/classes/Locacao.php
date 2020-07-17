@@ -10,9 +10,9 @@ Class Locacao
         $this->pdo = new PDO('mysql:dbname=biblioteca; host=localhost', 'root', '');
     }
 
-    public function validaRg($rg)
+    public function validaRa($ra)
     {
-        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$rg'");
+        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE ra_aluno = '$ra'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         if ($resultado["id_aluno"]){
             return $resultado["id_aluno"];
@@ -21,13 +21,13 @@ Class Locacao
         }
     }
 
-    public function verificaLocacoesAluno($rg)
+    public function verificaLocacoesAluno($ra)
     {
         $pesquisa = $this->pdo->query("SELECT count(id_locacao) AS qtd_locacoes 
                                         FROM locacao 
                                         INNER JOIN aluno
                                         ON aluno.id_aluno = locacao.id_aluno
-                                        WHERE rg_aluno = '$rg'
+                                        WHERE ra_aluno = '$ra'
                                         AND id_status_locacao <> 3");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado["qtd_locacoes"];

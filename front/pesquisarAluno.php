@@ -21,12 +21,12 @@
         <?php
 			if (isset($_POST['pesquisa'])){
 				$aluno = new Aluno;
-				$registros = $aluno->pesquisarRgAluno($_POST['pesquisa']);
+				$registros = $aluno->pesquisarRaAluno($_POST['pesquisa']);
 				if (count($registros) > 0){
 					echo '<table style="width: 100%; text-align:center;">
 					<tr style="width: 100%;">
 					  <th>Nome</th>
-					  <th>RG</th>
+					  <th>RA</th>
 					  <th>Telefone</th>
 					  <th>Editar</th>
 				  	</tr>';
@@ -40,7 +40,7 @@
 						?>
 						<td><a href="editarAluno.php?<?php echo "id=".$registros[$i]['id_aluno'].
 																"&nome=".$registros[$i]['nome_aluno'].
-																"&rg=".$registros[$i]['rg_aluno'].
+																"&ra=".$registros[$i]['ra_aluno'].
 																"&telefone=".$registros[$i]['telefone_aluno']; ?>">Editar</a>
 						</tr>
 						<?php

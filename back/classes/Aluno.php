@@ -5,7 +5,7 @@ Class Aluno
     private $id;
     private $nome;
     private $telefone;
-    private $rg;
+    private $ra;
     private $pdo;
 
     public function setId($id)
@@ -38,14 +38,14 @@ Class Aluno
         return $this->telefone;
     }
 
-    public function setRg($rg)
+    public function setRa($ra)
     {
-        $this->rg = $rg;
+        $this->ra = $ra;
     }
 
-    public function getRg()
+    public function getRa()
     {
-        return $this->rg;
+        return $this->ra;
     }
 
     public function __construct()
@@ -53,9 +53,9 @@ Class Aluno
         $this->pdo = new PDO('mysql:dbname=biblioteca; host=localhost', 'root', '');
     }
 
-    public function validaRg()
+    public function validaRa()
     {
-        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE rg_aluno = '$this->rg'");
+        $pesquisa = $this->pdo->query("SELECT id_aluno FROM aluno WHERE ra_aluno = '$this->ra'");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         if ($resultado["id_aluno"]){
             return $resultado["id_aluno"];
@@ -77,25 +77,25 @@ Class Aluno
 
     public function cadastraAluno()
     {
-        $this->pdo->query("INSERT INTO aluno(nome_aluno, telefone_aluno, rg_aluno) VALUES('$this->nome', '$this->telefone', '$this->rg')");
+        $this->pdo->query("INSERT INTO aluno(nome_aluno, telefone_aluno, ra_aluno) VALUES('$this->nome', '$this->telefone', '$this->ra')");
 
     }
 
-    public function pesquisarRgAluno($rg)
+    public function pesquisarRaAluno($ra)
     {
         $pesquisa = $this->pdo->query("SELECT id_aluno,
                                   nome_aluno,
-                                  rg_aluno,
+                                  ra_aluno,
                                   telefone_aluno
                             FROM aluno
-                            WHERE rg_aluno LIKE '%$rg%'");
+                            WHERE ra_aluno LIKE '%$ra%'");
         $resultado = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
     
-    public function atualizarDados($id, $nome, $rg, $telefone)
+    public function atualizarDados($id, $nome, $ra, $telefone)
     {
-        $this->pdo->query("UPDATE aluno SET nome_aluno = '$nome', telefone_aluno = '$telefone', rg_aluno = '$rg' WHERE id_aluno = '$id'");
+        $this->pdo->query("UPDATE aluno SET nome_aluno = '$nome', telefone_aluno = '$telefone', ra_aluno = '$ra' WHERE id_aluno = '$id'");
     }
 
 }

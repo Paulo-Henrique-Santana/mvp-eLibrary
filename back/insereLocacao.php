@@ -1,14 +1,14 @@
 <?php
 
-if (isset($_GET['exemplar']) && isset($_GET['idAluno']) && isset($_GET['rg']) && isset($_GET['locacoes'])){
+if (isset($_GET['exemplar']) && isset($_GET['idAluno']) && isset($_GET['ra']) && isset($_GET['locacoes'])){
     require_once 'classes/Locacao.php';
     $locacao = new Locacao;
     $idExemplar = $_GET['exemplar'];
     $idAluno = $_GET['idAluno'];
-    $rg = $_GET['rg'];
+    $ra = $_GET['ra'];
     $locacao->inserirLocacao($idAluno, $idExemplar);
-    $locacoes = $locacao->verificaLocacoesAluno($_GET['rg']);
-    header("location: ../front/locacao.php?idAluno=$idAluno&rg=$rg&locacoes=$locacoes");
+    $locacoes = $locacao->verificaLocacoesAluno($_GET['ra']);
+    header("location: ../front/locacao.php?idAluno=$idAluno&ra=$ra&locacoes=$locacoes");
 }
 
 ?>
