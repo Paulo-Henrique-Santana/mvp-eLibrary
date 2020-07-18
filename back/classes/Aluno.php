@@ -93,9 +93,9 @@ Class Aluno
         return $resultado;
     }
     
-    public function atualizarDados($id, $nome, $ra, $telefone)
+    public function atualizarDados($nome, $ra, $telefone)
     {
-        $this->pdo->query("UPDATE aluno SET nome_aluno = '$nome', telefone_aluno = '$telefone', ra_aluno = '$ra' WHERE id_aluno = '$id'");
+        $this->pdo->query("UPDATE aluno SET nome_aluno = '$nome', telefone_aluno = '$telefone', ra_aluno = '$ra' WHERE ra_aluno = '$ra'");
     }
 
 }

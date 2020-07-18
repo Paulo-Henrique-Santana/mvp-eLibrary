@@ -1,5 +1,4 @@
 <?php
-    require_once '../back/classes/Aluno.php';
     session_start();
     $id = $_GET['id'];
     $nome = $_GET['nome'];
@@ -19,7 +18,7 @@
 <body>
     <section>
         <a href="index.html"><i class="material-icons">arrow_back</i></a>
-        <form method="POST">
+        <form method="POST" action="../back/editaAluno.php?<?php echo "id=$id&nome=$nome&ra=$ra&telefone=$tel" ?>">
         <center><h2>Editar Aluno</h2></center> 
         <br>
             <h2>Nome :</h2> <input type="text" name="nome" value="<?php echo $nome; ?>" required>
@@ -28,15 +27,9 @@
             <br>
             <h2>Numero :</h2> <input type="tel" name="telefone" value="<?php echo $tel; ?>" maxlength="15" required>
             <br>
-            <?php 
-                if(isset($_POST['nome']) && isset($_POST['ra']) && isset($_POST['telefone'])){
-                    if($nome == $_POST['nome'] && $ra == $_POST['ra'] && $tel == $_POST['telefone']){
-                        echo "Nenhum campo foi alterado<br>";
-                    } else{
-                        $aluno = new Aluno;
-                        $aluno->atualizarDados($id, $_POST['nome'], $_POST['ra'], $_POST['telefone']);
-                        echo  "<p style='text-align:center; color:green; font-size:1.3em;'>Aluno editado com sucesso <p> <br>" ; 
-                    }
+            <?php
+                if (isset($_SESSION['aviso'])) {
+                    echo $_SESSION['aviso'];
                 }
             ?>
             <button>Editar</button>
