@@ -23,7 +23,7 @@
             <br>
             <h2>RA : </h2> <input type="number" name="ra" required>
             <br>
-            <h2>Numero :</h2> <input type="tel" name="telefone" maxlength="15" required>
+            <h2>Telefone :</h2> <input type="tel" name="telefone" maxlength="15" required>
             <br>
             <?php 
                 if (isset($_POST['nome']) && isset($_POST['ra']) && isset($_POST['telefone'])){

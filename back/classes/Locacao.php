@@ -42,7 +42,7 @@ Class Locacao
                                         AND id_exemplar NOT IN(SELECT id_exemplar
                                                                 FROM locacao
                                                                 WHERE id_status_locacao = 1
-                                                                OR id_status_locacao = 3)
+                                                                OR id_status_locacao = 2)
                                         LIMIT 1");
         $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
         return $resultado['id_exemplar'];
