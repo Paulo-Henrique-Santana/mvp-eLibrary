@@ -8,6 +8,7 @@
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
+    <script src="../back/teste.js"></script>
     <meta charset="utf-8">
     <title>Locação de livros</title>
 </head>
@@ -24,12 +25,12 @@
                     $ra = $_POST['ra'];
                     $l = new Locacao;
                     if ($l->validaRa($_POST['ra']) == false) {
-                        echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>RA não cadastrado</p>";
+                        echo "<br><p class='msgErro'>RA não cadastrado</p>";
                     } else {
                         $idAluno = $l->validaRa($ra);
                         if ($_POST['acao'] == "alugar") {
                             if($l->verificaLocacoesAluno($ra) >= 3){
-                                echo "<br><p style='text-align:center; color:red; font-size:1.3em;'>Aluno já possui 3 livros alugados</p>";
+                                echo "<br><p class='msgErro'>Aluno já possui 3 livros alugados</p>";
                             } else{
                                 $locacoesAluno = $l->verificaLocacoesAluno($ra);
                                 header("location: locacao.php?idAluno=$idAluno&ra=$ra&locacoes=$locacoesAluno");

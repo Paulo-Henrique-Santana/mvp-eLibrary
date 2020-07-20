@@ -1,5 +1,4 @@
 <?php
-    require_once '../back/classes/CrudLivro.php';
     session_start();
     $id = $_GET['id'];
     $livro = $_GET['livro'];
@@ -13,6 +12,7 @@
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
+    <script src="../back/teste.js"></script>
     <meta charset="utf-8">
     <title>Editar Livro</title>
 </head>
@@ -20,7 +20,7 @@
 <body>
     <section>
         <a href="index.html"><i class="material-icons">arrow_back</i></a>
-        <form method="POST">
+        <form method="POST" action="../back/editaLivro.php?<?php echo "id=$id&livro=$livro&autor=$autor&editora=$editora&exemplares=$exemplares" ?>">
         <center><h2>Editar Livro</h2></center> 
         <br>
             <h2>Nome do Livro:</h2> <input type="text" name="livro" value="<?php echo $livro; ?>" required>
@@ -32,12 +32,9 @@
             <h2>Qtd:</h2> <input type="number" name="exemplares" value="<?php echo $exemplares; ?>" required>
             <br>
             <?php 
-                if(isset($_POST['livro']) && isset($_POST['autor']) && isset($_POST['editora']) && isset($_POST['exemplares'])){
-                    if($_POST['livro'] == $livro && $_POST['autor'] == $autor && $_POST['editora'] == $editora && $_POST['exemplares'] == $exemplares){
-                        echo "nenhum campo foi alterado<br>";
-                    } else{
-                        echo "algum campo alterado";
-                    }
+                if (isset($_SESSION['aviso'])) {
+                    echo $_SESSION['aviso'];
+                    unset($_SESSION['aviso']);
                 }
             ?>
             <button>Editar</button>

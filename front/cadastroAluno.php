@@ -9,6 +9,7 @@
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
+    <script src="../back/teste.js"></script>
     <meta charset="utf-8">
     <title>Cadastro de Aluno</title>
 </head>
@@ -37,7 +38,7 @@
                         $_SESSION['cadastraAluno'] = "Esse Telefone já foi cadastrado";
                     }elseif ($a->validaRa() == false && $a->validaTelefone() == false) {
                         $a->cadastraAluno();
-                        echo " <p style='text-align:center; color:green; font-size:1.3em;'>Aluno cadastrado com sucesso </p>";
+                        echo " <p class='msgSucesso'>Aluno cadastrado com sucesso </p>";
                     }
                 }
 

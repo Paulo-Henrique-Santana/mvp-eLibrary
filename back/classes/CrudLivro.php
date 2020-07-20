@@ -136,17 +136,19 @@ Class CrudLivro extends Livro
         return $livros;
     }
 
-    // public function atualizarLivro($id, $livro, $autor, $editora, $exemplares)
-    // {
-    //     $this->pdo->query("UPDATE livro SET nome_livro = '$livro' WHERE id_livro = '$id'");
-    //     $this->pdo->query("UPDATE autor SET nome_autor = '$autor' WHERE id_autor = (SELECT id_autor FROM livro WHERE id_livro = '$id')");
-    //     $this->pdo->query("UPDATE editora SET nome_editora = '$editora' WHERE id_editora = (SELECT id_editora FROM livro WHERE id_livro = '$id')");
-    //     $pesquisa = $this->pdo->query("SELECT count(id_exemplar) as 'qtd_exemplares' FROM exemplar WHERE id_livro = '$id'");
-    //     $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
-    //     if ($resultado['qtd_exemplares'] <) {
-            
-    //     }
-    // }
+    public function atualizarLivro($id, $livro, $autor, $editora, $exemplares)
+    {
+        $this->pdo->query("UPDATE livro SET nome_livro = '$livro' WHERE id_livro = '$id'");
+        $this->pdo->query("UPDATE autor SET nome_autor = '$autor' WHERE id_autor = (SELECT id_autor FROM livro WHERE id_livro = '$id')");
+        $this->pdo->query("UPDATE editora SET nome_editora = '$editora' WHERE id_editora = (SELECT id_editora FROM livro WHERE id_livro = '$id')");
+        // $pesquisa = $this->pdo->query("SELECT count(id_exemplar) as 'qtd_exemplares' FROM exemplar WHERE id_livro = '$id'");
+        // $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
+        // if ($resultado['qtd_exemplares'] < $exemplares) {
+        //     for ($i = $resultado['qtd_exemplares']; $i < $exemplares; $i++) { 
+        //         $this->pdo->query("INSERT INTO exemplar(id_livro) VALUES($id)");
+        //     }
+        // }
+    }
 }
 
 ?>

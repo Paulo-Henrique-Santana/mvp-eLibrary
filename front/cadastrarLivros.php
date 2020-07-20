@@ -11,6 +11,7 @@
     <title>Cadastro de Livro</title>
     <link rel="stylesheet" href="style/estilo.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="../back/teste.js"></script>
 </head>
 
 <body>
@@ -37,9 +38,9 @@
                     $l->setNomeEditora($_POST["nomeEditora"]);
                     $l->setQtdExemplar($_POST["qtd"]);
                     if ($l->cadastraLivro() == false){
-                        echo "<p style='text-align:center; color:red; font-size:1.3em;'>Livro já foi cadastro</p>";
+                        echo "<p class='msgErro'>Livro já foi cadastrado</p>";
                     } else{
-                        echo "<p style='text-align:center; color:green; font-size:1.3em;'>Livro cadastrado com sucesso</p>";
+                        echo "<p class='msgSucesso'>Livro cadastrado com sucesso</p>";
                     }
                 }
 

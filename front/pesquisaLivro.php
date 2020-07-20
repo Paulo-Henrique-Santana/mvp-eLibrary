@@ -6,7 +6,8 @@
   <head>
   <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="style/estilo.css">
+	<link rel="stylesheet" href="style/estilo.css">
+	<script src="../back/teste.js"></script>
     <meta charset="utf-8">
     <title>Pesquisa Livro</title>
   </head>
@@ -51,7 +52,7 @@
 				echo "</table>";
 			}
 			else{
-				echo"<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum livro encontrado</p>";
+				echo"<p class='msgErro'>Nenhum livro encontrado</p>";
 			}
 		}
 		?>

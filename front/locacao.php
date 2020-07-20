@@ -8,6 +8,7 @@
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
+    <script src="../back/teste.js"></script>
     <meta charset="utf-8">
     <title>Pesquisa livro</title>
 </head>
@@ -28,7 +29,7 @@
         <form>
                 <?php
                     if ($_GET['locacoes'] >= 3) {
-                        echo "<p style='text-align:center; color:red; font-size:1.3em;'>Aluno já possui 3 livros alugados</p>";
+                        echo "<p class='msgErro'>Aluno já possui 3 livros alugados</p>";
                     } else {
                         if (isset($_POST['tipo']) && isset($_POST['pesquisa'])){
                             $tipo = $_POST['tipo'];
@@ -74,7 +75,7 @@
                                     echo "</tr>";
                                 }
                             } else {
-                                echo "<p style='text-align:center; color:red; font-size:1.3em;'>Nenhum livro encontrado</p>";
+                                echo "<p class='msgErro'>Nenhum livro encontrado</p>";
                             }
                         }
                     }

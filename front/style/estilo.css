@@ -131,6 +131,18 @@ td {
     width: 10em;
 }
 
+.msgErro {
+    text-align:center; 
+    color:red; 
+    font-size:1.3em;
+}
+
+.msgSucesso {
+    text-align:center; 
+    color:green; 
+    font-size:1.3em;
+}
+
 #btn_relatorio {
     width: 10%;
 }

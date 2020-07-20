@@ -11,6 +11,7 @@
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/estilo.css">
+    <script src="../back/teste.js"></script>
     <meta charset="utf-8">
     <title>Editar Aluno</title>
 </head>
@@ -30,6 +31,7 @@
             <?php
                 if (isset($_SESSION['aviso'])) {
                     echo $_SESSION['aviso'];
+                    unset($_SESSION['aviso']);
                 }
             ?>
             <button>Editar</button>
