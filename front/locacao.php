@@ -23,8 +23,8 @@
             <input type="radio" name="tipo" value="autor">Autor
             <br>
             <input type="text" name="pesquisa"> <br>
-            <button>Pesquisar</button>
-            <button type="reset">Limpar</button>
+            <button class="btn_padrao">Pesquisar</button>
+            
         </form>
         <form>
                 <?php
@@ -61,15 +61,17 @@
                                     }
                                     ?>
                                     <td>
-                                        <a href="../back/insereLocacao.php?<?php 
+                                    <button><a href="../back/insereLocacao.php?<?php 
                                                                 $exemplar = $locacao->pesquisaExemplarDisponivel($livros[$i]['id_livro']);
                                                                 echo "exemplar=".$exemplar.
                                                                     "&idAluno=".$_GET['idAluno'].
                                                                     "&ra=".$_GET['ra'].
                                                                     "&locacoes=".$_GET['locacoes'];
                                                             ?>">
-                                            Alugar
+                                           Alugar
                                         </a>
+                                        
+                                       </button> 
                                     </td>
                                     <?php
                                     echo "</tr>";

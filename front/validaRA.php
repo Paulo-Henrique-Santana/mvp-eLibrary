@@ -43,8 +43,8 @@
                 }
             ?>
             <br>
-            <button name="acao" value="alugar">Realizar Locação</button>
-            <button name="acao" value="devolver">Devolver</button>
+            <button name="acao" value="alugar" class="btn_padrao">Realizar Locação</button>
+            <button name="acao" value="devolver" class="btn_padrao">Devolver</button>
         </form>
     </section>
 </body>

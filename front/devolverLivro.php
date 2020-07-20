@@ -42,7 +42,7 @@
                                 echo "<td>$value</td>";
                             }
                         }
-                        echo"<td><a href=\"../back/devolveLocacao.php?idAluno=$idAluno&locacao=".$registros[$i]['id_locacao']."\">Devolver</a></td>";
+                        echo"<td><a href=\"../back/devolveLocacao.php?idAluno=$idAluno&locacao=".$registros[$i]['id_locacao']."\"><button>Devolver</button></a></td>";
                         echo'</tr>';
                     }
                     echo'</table>';

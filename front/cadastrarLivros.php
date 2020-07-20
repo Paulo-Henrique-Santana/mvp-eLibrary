@@ -45,7 +45,7 @@
                 }
 
             ?>
-            <button>Cadastrar</button>
+            <button class="btn_padrao">Cadastrar</button>
 
         </form>
     </section>

@@ -52,7 +52,12 @@ input[type=tel] {
     width: 30%;
 }
 
-button {
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.btn_padrao {
     border-radius: 5px;
     padding: 10px;
     background: rgb(125, 232, 231);
@@ -132,15 +137,15 @@ td {
 }
 
 .msgErro {
-    text-align:center; 
-    color:red; 
-    font-size:1.3em;
+    text-align: center;
+    color: red;
+    font-size: 1.3em;
 }
 
 .msgSucesso {
-    text-align:center; 
-    color:green; 
-    font-size:1.3em;
+    text-align: center;
+    color: green;
+    font-size: 1.3em;
 }
 
 #btn_relatorio {

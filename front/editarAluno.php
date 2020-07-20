@@ -34,7 +34,7 @@
                     unset($_SESSION['aviso']);
                 }
             ?>
-            <button>Editar</button>
+            <button class="btn_padrao">Editar</button>
         </form>
     </section>
 </body>

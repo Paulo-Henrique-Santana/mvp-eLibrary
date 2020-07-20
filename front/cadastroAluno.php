@@ -42,7 +42,7 @@
                     }
                 }
             ?>
-            <button>Enivar</button>
+            <button class="btn_padrao">Enviar</button>
         </form>
     </section>
 </body>

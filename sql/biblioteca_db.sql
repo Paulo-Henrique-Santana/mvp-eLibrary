@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `status_locacao` (
 -- Copiando dados para a tabela biblioteca.status_locacao: 0 rows
 /*!40000 ALTER TABLE `status_locacao` DISABLE KEYS */;
 INSERT INTO `status_locacao` (`id_status_locacao`, `situacao_locacao`) VALUES
-	(1, 'EM ATRASO'),
+	(1aluno, 'EM ATRASO'),
 	(2, 'EM ANDAMENTO'),
 	(3, 'ENTREGUE');
 /*!40000 ALTER TABLE `status_locacao` ENABLE KEYS */;

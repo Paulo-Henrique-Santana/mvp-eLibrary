@@ -17,7 +17,7 @@
 		<form method="post">
 			<center><h2>Pesquisar Livro</h2></center> <br>
 			<input type="text" name="pesquisa" id=""> <br>
-			<button>Pesquisar</button>
+			<button class="btn_padrao">Pesquisar</button>
 		</form>
       	<?php
 		if (isset($_POST['pesquisa'])){
@@ -46,7 +46,7 @@
 															"&livro=".$livros[$i]['nome_livro'].
 															"&autor=".$livros[$i]['nome_autor'].
 															"&editora=".$livros[$i]['nome_editora'].
-															"&exemplares=".$livros[$i]['qtd_exemplar'];?>">Editar</a>
+															"&exemplares=".$livros[$i]['qtd_exemplar'];?>"><button>Editar</button></a>
 					</tr>
 					<?php
 				}

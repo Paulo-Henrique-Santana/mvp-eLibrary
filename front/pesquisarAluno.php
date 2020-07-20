@@ -17,7 +17,7 @@
         <form method="post">
 			<center><h2>Pesquisar Aluno</h2></center><br>
 			<input type="text" name="pesquisa" id=""> <br>
-			<button>Pesquisar</button>
+			<button class="btn_padrao">Pesquisar</button>
 		</form>
         <?php
 			if (isset($_POST['pesquisa'])){
@@ -42,7 +42,7 @@
 						<td><a href="editarAluno.php?<?php echo "id=".$registros[$i]['id_aluno'].
 																"&nome=".$registros[$i]['nome_aluno'].
 																"&ra=".$registros[$i]['ra_aluno'].
-																"&telefone=".$registros[$i]['telefone_aluno']; ?>">Editar</a>
+																"&telefone=".$registros[$i]['telefone_aluno']; ?>"><button>Editar</button></a>
 						</tr>
 						<?php
 					}
