@@ -8,7 +8,7 @@
     $exemplares = $_GET['exemplares'];
 ?>
 <!DOCTYPE html>
-<html lang="pt/br" dir="ltr">
+<html lang="pt/br"   dir="ltr">
 <head>
     <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73705.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,7 +34,7 @@
                     echo $_SESSION['aviso'];
                     unset($_SESSION['aviso']);
                 }
-            ?>
+            ?> <br>
             <button class="btn_padrao">Editar</button>
         </form>
         <center><h2>Exemplares</h2></center> <br>
@@ -66,7 +66,7 @@
             }
         ?>
         </table>
-    <center><a href="../back/adicionaExemplar.php?<?php echo "id=".$_GET['id']."&livro=".$_GET['livro']."&autor=".$_GET['autor']."&editora=".$_GET['editora']."&exemplares=".$_GET['exemplares']; ?>"><button>Adicionar Exemplar</button></a></center>
+    <center><a href="../back/adicionaExemplar.php?<?php echo "id=".$_GET['id']."&livro=".$_GET['livro']."&autor=".$_GET['autor']."&editora=".$_GET['editora']."&exemplares=".$_GET['exemplares']; ?>"><button class="btn_padrao">Adicionar Exemplar</button></a></center>
     </section>
 </body>
 
