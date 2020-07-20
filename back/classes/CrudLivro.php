@@ -136,18 +136,32 @@ Class CrudLivro extends Livro
         return $livros;
     }
 
-    public function atualizarLivro($id, $livro, $autor, $editora, $exemplares)
+    public function atualizarLivro($id, $livro, $autor, $editora)
     {
         $this->pdo->query("UPDATE livro SET nome_livro = '$livro' WHERE id_livro = '$id'");
         $this->pdo->query("UPDATE autor SET nome_autor = '$autor' WHERE id_autor = (SELECT id_autor FROM livro WHERE id_livro = '$id')");
         $this->pdo->query("UPDATE editora SET nome_editora = '$editora' WHERE id_editora = (SELECT id_editora FROM livro WHERE id_livro = '$id')");
-        // $pesquisa = $this->pdo->query("SELECT count(id_exemplar) as 'qtd_exemplares' FROM exemplar WHERE id_livro = '$id'");
-        // $resultado = $pesquisa->fetch(PDO::FETCH_ASSOC);
-        // if ($resultado['qtd_exemplares'] < $exemplares) {
-        //     for ($i = $resultado['qtd_exemplares']; $i < $exemplares; $i++) { 
-        //         $this->pdo->query("INSERT INTO exemplar(id_livro) VALUES($id)");
-        //     }
-        // }
+    }
+
+    public function listarExemplares($idLivro)
+    {
+        $pesquisa = $this->pdo->query("SELECT exemplar.id_exemplar,
+                                                nome_livro,
+                                                situacao_locacao,
+                                                nome_aluno
+                                        FROM exemplar
+                                        LEFT JOIN locacao ON exemplar.id_exemplar = locacao.id_exemplar
+                                        INNER JOIN livro ON livro.id_livro = exemplar.id_livro
+                                        LEFT JOIN status_locacao ON status_locacao.id_status_locacao = locacao.id_status_locacao
+                                        LEFT JOIN aluno ON aluno.id_aluno = locacao.id_aluno
+                                        WHERE livro.id_livro = '$idLivro'
+                                        ORDER BY situacao_locacao DESC");
+        $exemplares = $pesquisa->fetchAll(PDO::FETCH_ASSOC);
+        return $exemplares;
+    }
+
+    public function adicionarExemplar($idLivro){
+        $this->pdo->query("INSERT INTO exemplar(id_livro) VALUES($idLivro)");
     }
 }
 

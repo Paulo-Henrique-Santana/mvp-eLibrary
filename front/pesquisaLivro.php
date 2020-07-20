@@ -37,8 +37,9 @@
 				  for ($i=0; $i < count($livros); $i++){
 					echo "<tr style='text-align:center;'>";
 					foreach($livros[$i] as $key => $value2){
-						if ($key != "id_livro")
-						echo "<td>$value2</td>";
+						if ($key != "id_livro") {
+							echo "<td>$value2</td>";
+						}
 					}
 					?>
 					<td><a href="editarLivro.php?<?php echo "id=".$livros[$i]['id_livro'].
