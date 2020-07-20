@@ -33,16 +33,14 @@
                     $a->setRa($_POST['ra']);
                     $a->setTelefone($_POST['telefone']);
                     if ($a->validaRa() == true) {
-                        $_SESSION['cadastraAluno'] = "Esse RA já está cadastrado";
+                        echo "<p class='msgErro'>RA já cadastrado</p>";
                     }elseif ($a->validaTelefone() == true) {
-                        $_SESSION['cadastraAluno'] = "Esse Telefone já foi cadastrado";
+                        echo "<p class='msgErro'>Telefone já cadastrado</p>";
                     }elseif ($a->validaRa() == false && $a->validaTelefone() == false) {
                         $a->cadastraAluno();
-                        echo " <p class='msgSucesso'>Aluno cadastrado com sucesso </p>";
+                        echo "<p class='msgSucesso'>Aluno cadastrado com sucesso</p>";
                     }
                 }
-
-              
             ?>
             <button>Enivar</button>
         </form>

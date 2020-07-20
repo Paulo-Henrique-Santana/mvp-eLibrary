@@ -38,7 +38,7 @@
                     $l->setNomeEditora($_POST["nomeEditora"]);
                     $l->setQtdExemplar($_POST["qtd"]);
                     if ($l->cadastraLivro() == false){
-                        echo "<p class='msgErro'>Livro já foi cadastrado</p>";
+                        echo "<p class='msgErro'>Livro já cadastrado</p>";
                     } else{
                         echo "<p class='msgSucesso'>Livro cadastrado com sucesso</p>";
                     }
